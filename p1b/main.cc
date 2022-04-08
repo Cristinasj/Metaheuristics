@@ -13,15 +13,11 @@ vector<pair<char,vector<double>>> leerDatos(string nombreArchivo) {
     archivo.open(nombreArchivo); 
     string linea; 
     if (archivo.is_open()) {
-        while (archivo) {
+        // Se ignoran los metadatos 
+        getline(archivo, linea); 
+        while(linea != "@data")
             getline(archivo, linea); 
-            // Ignorar los metadatos
-            while (linea != "@data") 
-                getline(archivo, linea);
-            getline(archivo, linea); 
-            // Leer los datos de la línea 
-        }
-
+        // Se leen los datos 
     }
     return datos; 
 }
