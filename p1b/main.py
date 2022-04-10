@@ -37,12 +37,22 @@ def divisor(muestra):
     return divisiones
 
 # Algoritmo 1-NN
+def KNN_separado(entrenamiento, test): 
+    tasa_clas = 0
+    tasa_red = 0
+    return tasa_clas, tasa_red
+
 def KNN (data, indice): 
-    entrenamiento = data[1]
-    test = data[0]
+    entrenamiento = data[indice]
+    test = []
+    for i in range(5): 
+        if i != indice: 
+            test.append(data[i])
     tasa_clas = 0
     tasa_red = 0 
     tiempo = 0 
+    #start_timers()
+    tasa_clas, tasa_red = KNN_separado(entrenamiento, test)
     return tasa_clas, tasa_red, tiempo 
 
 # Algoritmo BL 
