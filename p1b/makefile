@@ -1,3 +1,5 @@
+# all: 
+# 	g++ main.cc
+#	./a.out  
 all: 
-	g++ main.cc
-	./a.out  
+	python3 main.py
