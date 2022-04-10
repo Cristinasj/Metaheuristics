@@ -61,9 +61,9 @@ def KNN (data, indice):
 
 # Main 
 print('Lectura de los datos')
-ionosphere = leerDatos('Instancias_APC/ionosphere.arff')
-parkinsons = leerDatos('Instancias_APC/parkinsons.arff')
-spectf_heart = leerDatos('Instancias_APC/spectf-heart.arff')
+ionosphere = leerDatos('../Instancias_APC/ionosphere.arff')
+parkinsons = leerDatos('../Instancias_APC/parkinsons.arff')
+spectf_heart = leerDatos('../Instancias_APC/spectf-heart.arff')
 print('Lectura de los datos completada')
 
 print('Algoritmo 1-NN')
