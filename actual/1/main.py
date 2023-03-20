@@ -18,7 +18,7 @@ def porcentajeReduccion(pesos=None):
     if pesos == None: 
         return 0.0
     UMBRAL = 0.01
-    return len(pesos[pesos < UMBRAL]) / len(pesos)*100 
+    return len(pesos[pesos < UMBRAL]) / pesos.size *100 
 
 def porcentajeClasificacion(entrenamiento, evaluacion, pesos=None):
     clases = [e.clase for e in evaluacion]
@@ -43,10 +43,10 @@ def entrenador1NN(entrenamiento):
     return np.full_like(entrenamiento[0], 1)
 
 def relief(entrenamiento): 
-    raise NotImplemented
+    return np.full_like(entrenamiento[0], 1)
 
 def BL(entrenamiento): 
-    raise NotImplemented
+    return np.full_like(entrenamiento[0], 1)
 
 def main(): 
 
@@ -58,36 +58,34 @@ def main():
         ("RELIEF", relief), 
     ]
 
-
-    resultados = {
-        "algoritmo": BL, 
-        "bases de datos": {
-
-        }
-    }
-
-    # Cambiar anidamiento en este orden resultados["BL"]["spect-hart"]["%_red"][1]
+    tabla_s = ""
+    
     for nombre, entrenador in algoritmos: 
+        tabla_s += """;;;;;;;;;;;;
+;;;;Resultados obtenidos por el algoritmo {} en el problema del APC;;;;;;;;
+;Diabetes;;;;Ozone;;;;Spectf-heart;;;
+;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T
+""".format(nombre)
+
+        print(tabla_s)
         for db in basesDatos: 
-            for i, p in enumerate(particiones): 
-
-
-    for db in basesDatos: 
-        particiones = []
-        for numero in range(1,6): 
-            nombre = "Instancias_APC" + db + "_" + str(numero) + ".arff"
-            particiones.append(leerDatos(nombre))
+            particiones = []
+            for numero in range(1,6): 
+                nombre_archivo = "Instancias_APC/" + db + "_" + str(numero) + ".arff"
+                print(nombre_archivo)
+                particiones.append(leerDatos(nombre_archivo))
         
-        # CROSS-VALIDATION
-        for i, p in enumerate(particiones): 
-            # Crear conjuntos de evaluacion y entrenamiento
-            evaluacion = p
-            entrenamiento = []    
-            for j in range(len(particiones)): 
-                if i != j: 
-                    entrenamiento += particiones[j]
-            
-            for nombre, entrenador in algoritmos:
+            filas = ["Particion " + str(x) for x in range(1,6)]    
+            # CROSS-VALIDATION
+            for i, p in enumerate(particiones): 
+                print(f"Algoritmo {nombre} particion {i}")
+                # Crear conjuntos de evaluacion y entrenamiento
+                evaluacion = p
+                entrenamiento = []    
+                for j in range(len(particiones)): 
+                    if i != j: 
+                        entrenamiento += particiones[j]
+                
                 tiempo_ini = time.time()
                 pesos = entrenador(entrenamiento)
                 tiempo_fin = time.time() 
@@ -97,6 +95,9 @@ def main():
                 pr = porcentajeReduccion(pesos)
                 fitness = funcionEvaluacion(entrenamiento, evaluacion, pesos)
 
-                #with open()      
-
+                filas[i] += f";{pc};{pr};{fitness};{tiempo_s}"
+            for f in filas: 
+                tabla_s+=f + "\n"
+            print(tabla_s)            
+                
 main() 

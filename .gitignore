@@ -3,7 +3,7 @@
 *.zip
 transparencias
 *.pdf
-Instancias_APC*
 Tablas_APC_2021-22.xls 
+*METAHEURISTICAS*
 tools*
 a.out
