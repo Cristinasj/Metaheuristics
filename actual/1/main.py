@@ -62,23 +62,21 @@ def main():
     
     for nombre, entrenador in algoritmos: 
         tabla_s += """;;;;;;;;;;;;
-;;;;Resultados obtenidos por el algoritmo {} en el problema del APC;;;;;;;;
+;;;;{};;;;;;;;
 ;Diabetes;;;;Ozone;;;;Spectf-heart;;;
 ;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T
 """.format(nombre)
 
-        print(tabla_s)
         for db in basesDatos: 
             particiones = []
             for numero in range(1,6): 
                 nombre_archivo = "Instancias_APC/" + db + "_" + str(numero) + ".arff"
-                print(nombre_archivo)
                 particiones.append(leerDatos(nombre_archivo))
         
             filas = ["Particion " + str(x) for x in range(1,6)]    
             # CROSS-VALIDATION
             for i, p in enumerate(particiones): 
-                print(f"Algoritmo {nombre} particion {i}")
+                print(f"Algoritmo {nombre} particion {i} bd {db}")
                 # Crear conjuntos de evaluacion y entrenamiento
                 evaluacion = p
                 entrenamiento = []    
@@ -96,8 +94,8 @@ def main():
                 fitness = funcionEvaluacion(entrenamiento, evaluacion, pesos)
 
                 filas[i] += f";{pc};{pr};{fitness};{tiempo_s}"
-            for f in filas: 
-                tabla_s+=f + "\n"
-            print(tabla_s)            
-                
+        for f in filas: 
+            tabla_s+=f + "\n"
+        with open("resultados.csv", "w") as resultados: 
+            resultados.write(tabla_s)       
 main() 
