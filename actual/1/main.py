@@ -117,15 +117,20 @@ def main():
     print(datos)
 
     for algoritmo, entrenador in algoritmos: 
-        tabla_s += f";;;;;;;;;;;;\n;;;;{algoritmo};;;;;;;;\n;Diabetes;;;;Ozone;;;;Spectf-heart;;;\n;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T\n"
-        # Acumulación de parámetros para hacer la media 
+        tabla_s += f";;;;{algoritmo};;;;;;;;\n;Diabetes;;;;Ozone;;;;Spectf-heart;;;\n;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T\n"
         for particion in range(0, 6):
             tabla_s += f"Partición {particion} "
             for bd in basesDatos: 
                 for parametro in parametros:
                     tabla_s += ";{0:.2f}".format(datos[algoritmo][bd][particion][parametro])
             tabla_s += "\n"  
-
+    tabla_s += f";;;;Global;;;;;;;;\n;Diabetes;;;;Ozone;;;;Spectf-heart;;;\n;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T\n"
+    for algoritmo, entrenador in algoritmos:
+        tabla_s += f"{algoritmo}" 
+        for bd in basesDatos: 
+            for parametro in parametros: 
+                tabla_s += ";{0:.2f}".format(datos[algoritmo][bd][0][parametro])
+        tabla_s += "\n"
     with open("resultados.csv", "w") as resultados: 
         resultados.write(tabla_s)       
 main() 
