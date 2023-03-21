@@ -4,6 +4,8 @@ import numpy as np
 from elemento import Elemento
 import time 
 
+PARTICIONES = 5
+
 def leerDatos(nombreArchivo):
     elementos = [] 
     for row in arff.load(nombreArchivo):
@@ -17,7 +19,7 @@ def leerDatos(nombreArchivo):
 def porcentajeReduccion(pesos=None): 
     if pesos == None: 
         return 0.0
-    UMBRAL = 0.01
+    UMBRAL = 0.1
     return len(pesos[pesos < UMBRAL]) / pesos.size *100 
 
 def porcentajeClasificacion(entrenamiento, evaluacion, pesos=None):
@@ -46,6 +48,7 @@ def relief(entrenamiento):
     return np.full_like(entrenamiento[0], 1)
 
 def BL(entrenamiento): 
+    # Generación de la solucion inicial 
     return np.full_like(entrenamiento[0], 1)
 
 def main(): 
@@ -57,6 +60,7 @@ def main():
         ("busqueda local", BL),
         ("RELIEF", relief), 
     ]
+    parametros = ["pc", "pr", "ft", "tm"]
 
     datos = {} 
 
@@ -70,7 +74,14 @@ def main():
                 particiones.append(leerDatos(nombre_archivo))
         
             filas = ["Particion " + str(x) for x in range(1,6)]    
+            
             # CROSS-VALIDATION
+            
+            # La partición 0 tiene las medias del resto de particiones 
+            datos[nombre][db][0] = {}
+            for parametro in parametros: 
+                datos[nombre][db][0][parametro] = 0
+            
             for i, p in enumerate(particiones):
                 datos[nombre][db][i+1] = {}
                 print(f"Algoritmo {nombre} bd {db} particion {i+1}")
@@ -94,9 +105,12 @@ def main():
                 datos[nombre][db][i+1]["pr"] = pr
                 datos[nombre][db][i+1]["ft"] = fitness
                 datos[nombre][db][i+1]["tm"] = tiempo_s
-                filas[i] += f";{pc};{pr};{fitness};{tiempo_s}"
-        #for f in filas: 
-        #    tabla_s+=f + "\n"
+                # Acumulaciones 
+                datos[nombre][db][0]["pc"] += pc/PARTICIONES 
+                datos[nombre][db][0]["pr"] += pr/PARTICIONES 
+                datos[nombre][db][0]["ft"] += fitness/PARTICIONES 
+                datos[nombre][db][0]["tm"] += tiempo_s/PARTICIONES 
+
 
     # GENERACIÓN DEL CSV
     tabla_s = ""
@@ -104,12 +118,13 @@ def main():
 
     for algoritmo, entrenador in algoritmos: 
         tabla_s += f";;;;;;;;;;;;\n;;;;{algoritmo};;;;;;;;\n;Diabetes;;;;Ozone;;;;Spectf-heart;;;\n;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T\n"
-        for particion in range(1, 6):
+        # Acumulación de parámetros para hacer la media 
+        for particion in range(0, 6):
             tabla_s += f"Partición {particion} "
             for bd in basesDatos: 
-                for parametro in ["pc", "pr", "ft", "tm"]:
+                for parametro in parametros:
                     tabla_s += ";{0:.2f}".format(datos[algoritmo][bd][particion][parametro])
-            tabla_s += "\n"
+            tabla_s += "\n"  
 
     with open("resultados.csv", "w") as resultados: 
         resultados.write(tabla_s)       
