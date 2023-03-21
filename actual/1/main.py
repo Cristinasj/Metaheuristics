@@ -58,16 +58,12 @@ def main():
         ("RELIEF", relief), 
     ]
 
-    tabla_s = ""
-    
-    for nombre, entrenador in algoritmos: 
-        tabla_s += """;;;;;;;;;;;;
-;;;;{};;;;;;;;
-;Diabetes;;;;Ozone;;;;Spectf-heart;;;
-;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T
-""".format(nombre)
+    datos = {} 
 
-        for db in basesDatos: 
+    for nombre, entrenador in algoritmos:
+        datos[nombre] = {} 
+        for db in basesDatos:
+            datos[nombre][db] = {} 
             particiones = []
             for numero in range(1,6): 
                 nombre_archivo = "Instancias_APC/" + db + "_" + str(numero) + ".arff"
@@ -75,8 +71,9 @@ def main():
         
             filas = ["Particion " + str(x) for x in range(1,6)]    
             # CROSS-VALIDATION
-            for i, p in enumerate(particiones): 
-                print(f"Algoritmo {nombre} particion {i} bd {db}")
+            for i, p in enumerate(particiones):
+                datos[nombre][db][i+1] = {}
+                print(f"Algoritmo {nombre} bd {db} particion {i+1}")
                 # Crear conjuntos de evaluacion y entrenamiento
                 evaluacion = p
                 entrenamiento = []    
@@ -93,9 +90,27 @@ def main():
                 pr = porcentajeReduccion(pesos)
                 fitness = funcionEvaluacion(entrenamiento, evaluacion, pesos)
 
+                datos[nombre][db][i+1]["pc"] = pc
+                datos[nombre][db][i+1]["pr"] = pr
+                datos[nombre][db][i+1]["ft"] = fitness
+                datos[nombre][db][i+1]["tm"] = tiempo_s
                 filas[i] += f";{pc};{pr};{fitness};{tiempo_s}"
-        for f in filas: 
-            tabla_s+=f + "\n"
-        with open("resultados.csv", "w") as resultados: 
-            resultados.write(tabla_s)       
+        #for f in filas: 
+        #    tabla_s+=f + "\n"
+
+    # GENERACIÓN DEL CSV
+    tabla_s = ""
+    print(datos)
+
+    for algoritmo, entrenador in algoritmos: 
+        tabla_s += f";;;;;;;;;;;;\n;;;;{algoritmo};;;;;;;;\n;Diabetes;;;;Ozone;;;;Spectf-heart;;;\n;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T;%_clas;%red;Fit.;T\n"
+        for particion in range(1, 6):
+            tabla_s += f"Partición {particion} "
+            for bd in basesDatos: 
+                for parametro in ["pc", "pr", "ft", "tm"]:
+                    tabla_s += ";{0:.2f}".format(datos[algoritmo][bd][particion][parametro])
+            tabla_s += "\n"
+
+    with open("resultados.csv", "w") as resultados: 
+        resultados.write(tabla_s)       
 main() 
