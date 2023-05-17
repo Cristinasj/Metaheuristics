@@ -1,3 +1,10 @@
+# Cómo ejecutar el programa 
+En una terminal, situarse en el directorio software, el mismo en el que está situato este documento LEEME.md. 
+Ejecutar lo siguiente en la terminal: 
+
+$ python3 main.py
+
+# Descripción de los ficheros 
 LEEME.md: Este mismo documento 
 
 main.py: Programa principal con los algoritmos
