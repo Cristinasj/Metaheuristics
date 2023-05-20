@@ -1,3 +1,18 @@
+- Hacer la P2
+- cambiar Elemento por una matriz de datos 
+- normalizar los datos 
+- comprobar los resultados con la web
+- Recalcular los resultados de los 3 algoritmos de la P1
+- Los nombres de los ficheros en la explicación de la ejecución no son correctos 
+- Hacer un análisis más largo 
+- mejorar los tiempos ojeando lo que hicieron mis compañeros  
+- añadir en la memoria que estoy usando numpy 
+- Hacer el índice de forma automática 
+- meter pseudocódigo de los operadores comunes 
+- alargar el pseudocódigo de los algoritmos, especialmente el de greedy
+- RELIEF da % de reducción excesivos. Comprobar la implementación 
+
+
 # Cómo ejecutar el programa 
 En una terminal, situarse en el directorio software, el mismo en el que está situato este documento LEEME.md. 
 Ejecutar lo siguiente en la terminal: 

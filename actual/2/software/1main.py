@@ -2,7 +2,7 @@
 from algoritmos.simples import BL, entrenador1NN, relief
 from algoritmos.geneticos import AGG_BLX, AGG_CA, AGE_BLX, AGE_CA 
 #from algoritmos.memeticos import AM_10_1, AM_10_01, AM_10_01mej
-from algoritmos.evaluacionMatriz import *
+from algoritmos.funcionEvaluacion import *
 
 #import cProfile
 #import re 
@@ -12,30 +12,20 @@ import numpy as np
 from elemento import Elemento
 import time 
     
-def leerDatos(nombreArchivo: str) -> np.array:
-    '''
-    param: 
-        nombreArchivo: nombre del archivo arff
-    return: 
-        datos normalizados 
-        clases de los datos 
-    '''
+def normalizar(datos): 
+    # Se calcula el elemento mínimo y maximo del conjunto de datos
+    #min = np.apply_along_axis(np.amin, 0, datos)
+    #max = np.apply_along_axis(np.amax, 0, datos)
+    normalizado = (datos - min)/(max-min)
+    normalizado[np.isnan(normalizado)] = 0
+    return normalizado 
+
+def leerDatos(nombreArchivo):
     elementos = [] 
     for row in arff.load(nombreArchivo):
         elementos.append(Elemento(row))
-
-    datos = [e.caracteristicas for e in elementos]
-    clases = [e.clase for e in elementos]
-
-    # Se calcula el minimo y maximo para cada atributo
-    min = np.apply_along_axis(np.amin, 0, datos)
-    max = np.apply_along_axis(np.amax, 0, datos)
-    dif = max - min 
-
-    # Se normaliza
-    datos = (datos - min)/dif
-    datos[np.isnan(datos)] = 0
-    return datos, clases 
+    #return normalizar(elementos)
+    return elementos
 
 def main(): 
 
@@ -72,6 +62,8 @@ def main():
                 nombre_archivo = "Instancias_APC/" + db + "_" + str(numero+1) + ".arff"
                 particiones.append(leerDatos(nombre_archivo))
         
+            filas = ["Particion " + str(x + 1) for x in range(PARTICIONES)]    
+            
             # CROSS-VALIDATION
             
             # La partición 0 tiene las medias del resto de particiones 
@@ -90,13 +82,13 @@ def main():
                         entrenamiento += particiones[j]
                 
                 tiempo_ini = time.time()
-                pesos = entrenador(entrenamiento[0], entrenamiento[1])
+                pesos = entrenador(entrenamiento)
                 tiempo_fin = time.time() 
                 
                 tiempo_s = tiempo_fin - tiempo_ini
-                pc = porcentaje_clasificacion(entrenamiento, evaluacion, pesos)
-                pr = porcentaje_reduccion(pesos)
-                fitness = funcion_evaluacion(entrenamiento, evaluacion, pesos)
+                pc = porcentajeClasificacion(entrenamiento, evaluacion, pesos)
+                pr = porcentajeReduccion(pesos)
+                fitness = funcionEvaluacion(entrenamiento, evaluacion, pesos)
 
                 datos[nombre][db][i+1]["pc"] = pc
                 datos[nombre][db][i+1]["pr"] = pr

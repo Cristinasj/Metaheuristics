@@ -1,15 +1,8 @@
 # -*- coding: utf-8 -*- 
-from algoritmos.simples import BL, entrenador1NN, relief
-from algoritmos.geneticos import AGG_BLX, AGG_CA, AGE_BLX, AGE_CA 
-#from algoritmos.memeticos import AM_10_1, AM_10_01, AM_10_01mej
-from algoritmos.evaluacionMatriz import *
-
-#import cProfile
-#import re 
+from main import AGE_BLX, porcentaje_clasificacion, porcentaje_reduccion, funcion_evaluacion
 from functools import reduce
 import arff 
 import numpy as np 
-from elemento import Elemento
 import time 
     
 def leerDatos(nombreArchivo: str) -> np.array:
@@ -20,12 +13,19 @@ def leerDatos(nombreArchivo: str) -> np.array:
         datos normalizados 
         clases de los datos 
     '''
-    elementos = [] 
-    for row in arff.load(nombreArchivo):
-        elementos.append(Elemento(row))
+    data_arff = arff.load(nombreArchivo)
+    
+    # Lectura de los datos 
+    datos = np.zeros((len(data_arff[0]), len(data_arff[0][0])-1))
+    for i in range(0, len(datos)):
+        for j in range(0, len(datos[0])):
+            datos[i][j] = data_arff[0][i][j]
 
-    datos = [e.caracteristicas for e in elementos]
-    clases = [e.clase for e in elementos]
+    # Lectura de los atributos
+    clases = np.chararray(len(datos))
+    n_atrib = len(datos[0])
+    for i in range (0, len(datos)):
+        clases[i] = data_arff[0][i][n_atrib]
 
     # Se calcula el minimo y maximo para cada atributo
     min = np.apply_along_axis(np.amin, 0, datos)
@@ -52,7 +52,7 @@ def main():
 #        ("AGG-BLX", AGG_BLX),
 #        ("AGG-CA", AGG_CA), 
         ("AGE-BLX", AGE_BLX), 
-        ("AGE-CA", AGE_CA), 
+#        ("AGE-CA", AGE_CA), 
 #        ("AM-(10,1.0)", AM_10_1),
 #        ("AM-(10,0.1)", AM_10_01),
 #        ("AM-(10,0.1mej)", AM_10_01mej)
@@ -72,6 +72,8 @@ def main():
                 nombre_archivo = "Instancias_APC/" + db + "_" + str(numero+1) + ".arff"
                 particiones.append(leerDatos(nombre_archivo))
         
+            filas = ["Particion " + str(x + 1) for x in range(PARTICIONES)]    
+            
             # CROSS-VALIDATION
             
             # La partición 0 tiene las medias del resto de particiones 
@@ -90,7 +92,7 @@ def main():
                         entrenamiento += particiones[j]
                 
                 tiempo_ini = time.time()
-                pesos = entrenador(entrenamiento[0], entrenamiento[1])
+                pesos = entrenador(entrenamiento)
                 tiempo_fin = time.time() 
                 
                 tiempo_s = tiempo_fin - tiempo_ini
