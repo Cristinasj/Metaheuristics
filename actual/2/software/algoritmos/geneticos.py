@@ -1,21 +1,35 @@
 import numpy as np
 from algoritmos.evaluacionMatriz import *
 from typing import Callable
+import random 
 
 def cruce_BLX(c1: np.array, c2: np.array) -> tuple:
     '''
     param: dos cromosomas 
     return: los dos cromosomas cruzados con BLX
     '''
-    alfa = 0.3 
-    cmin = np.minimun(c1, c2)
-    cmax = np.maximum(c1, c2)
-    I = cmax-cmin 
-    d1 = np.random.uniform(cmin - I*alfa, cmax + I*alfa)
-    d2 = np.random.uniform(cmin - I*alfa, cmax + I*alfa)
-    c1[:] = np.clip(d1, 0, 1)
-    c2[:] = np.clip(d2, 0, 1)
-    return c1, c2
+    salida1 = np.zeros(len(c1)+1)
+    salida2 = np.zeros(len(c1)+1)
+
+    for i in range(0,len(c1)):
+
+        if (c1[i] < c2[i]):
+            cmin = c1[i]
+            cmax = c2[i]
+        else:
+            cmin = c2[i]
+            cmax = c1[i]
+    l = cmax-cmin
+    b1 = cmin-l*0.3
+    if (b1 < 0):
+      b1 = 0
+    b2 = cmax+l*0.3
+    if (b2 > 1):
+      b2 = 1
+    salida1[i] = np.random.uniform(b1, b2)
+    salida2[i] = np.random.uniform(b1, b2)
+
+    return salida1, salida2
 
 def cruce_CA(c1: np.array, c2: np.array) -> tuple: 
     alfas = np.random.rand(len(c1)) 
@@ -25,8 +39,12 @@ def cruce_CA(c1: np.array, c2: np.array) -> tuple:
     c2[:] = d2
     return c1, c2
 
-def mutacion(): 
-    pass
+def mutacion(i, j, poblacion):
+  poblacion[i][j] += np.random.normal(0, 0.3)
+  if (poblacion[i][j] < 0):
+    poblacion[i][j] = 0
+  if (poblacion[i][j] > 1):
+    poblacion[i][j] = 1
 
 def torneoBinario(poblacion : np.array, seleccion: tuple) -> np.array: 
     '''
@@ -95,7 +113,7 @@ def estacionario(matriz_datos: np.array, etiquetas: np.array, tipo_cruce: Callab
     iterations = 0
     while (iterations < max_evaluaciones):
         # Competición entre 4 individuos
-        seleccion = poblacion[np.random.sample(range(t_poblacion), 4)]
+        seleccion = poblacion[random.sample(range(t_poblacion), 4)]
         c1, c2 = torneoTetra(seleccion)
 
         # Se hacen los cruces
@@ -103,15 +121,15 @@ def estacionario(matriz_datos: np.array, etiquetas: np.array, tipo_cruce: Callab
         h1, h2 = tipo_cruce(c1, c2)
 
         # Se aplican las mutaciones
-        mutaciones = [np.random.sample(range(tam_w*2), (int)(2*tam_w*p_mutacion))]
+        mutaciones = [random.sample(range(tam_w*2), (int)(2*tam_w*p_mutacion))]
         for i in range(0, len(mutaciones)):
             r = np.random.randint(tam_w*2)
             i = r // tam_w
             j = r % tam_w
             mutacion(i, j, [h1, h2])
 
-        h1[len(h1)-1] = funcionEvaluacion(matriz_datos, etiquetas, h1[0:len(h1)-1], 0.5)
-        h2[len(h2)-1] = funcionEvaluacion(matriz_datos, etiquetas, h1[0:len(h2)-1], 0.5)
+        h1[len(h1)-1] = funcionEvaluacionLeaveOneOut(matriz_datos, etiquetas, h1[0:len(h1)-1])
+        h2[len(h2)-1] = funcionEvaluacionLeaveOneOut(matriz_datos, etiquetas, h1[0:len(h2)-1])
 
         # Competición para entrar en la poblacion
         seleccion[0] = h1
