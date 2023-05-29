@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*- 
 from algoritmos.simples import BL, entrenador1NN, relief
 from algoritmos.geneticos import AGG_BLX, AGG_CA, AGE_BLX, AGE_CA 
-#from algoritmos.memeticos import AM_10_1, AM_10_01, AM_10_01mej
-from algoritmos.funcionEvaluacion import *
+from algoritmos.trayectorias import BMB, ES, ILS, ILS_ES, VNS
+ 
+from algoritmos.evaluacionMatriz import *
 
 #import cProfile
 #import re 
@@ -12,27 +13,37 @@ import numpy as np
 from elemento import Elemento
 import time 
     
-def normalizar(datos): 
-    # Se calcula el elemento mínimo y maximo del conjunto de datos
-    #min = np.apply_along_axis(np.amin, 0, datos)
-    #max = np.apply_along_axis(np.amax, 0, datos)
-    normalizado = (datos - min)/(max-min)
-    normalizado[np.isnan(normalizado)] = 0
-    return normalizado 
-
-def leerDatos(nombreArchivo):
+def leerDatos(nombreArchivo: str) -> np.array:
+    '''
+    param: 
+        nombreArchivo: nombre del archivo arff
+    return: 
+        datos normalizados 
+        clases de los datos 
+    '''
     elementos = [] 
     for row in arff.load(nombreArchivo):
         elementos.append(Elemento(row))
-    #return normalizar(elementos)
-    return elementos
+
+    datos = [e.caracteristicas for e in elementos]
+    clases = [e.clase for e in elementos]
+
+    # Se calcula el minimo y maximo para cada atributo
+    min = np.apply_along_axis(np.amin, 0, datos)
+    max = np.apply_along_axis(np.amax, 0, datos)
+    dif = max - min 
+
+    # Se normaliza
+    datos = (datos - min)/dif
+    datos[np.isnan(datos)] = 0
+    return datos, clases 
 
 def main(): 
 
     basesDatos = [
         "diabetes", 
-#        "ozone-320", 
-#        "spectf-heart"
+        "ozone-320", 
+        "spectf-heart"
     ]
 
     algoritmos = [
@@ -41,11 +52,13 @@ def main():
 #        ("RELIEF", relief),
 #        ("AGG-BLX", AGG_BLX),
 #        ("AGG-CA", AGG_CA), 
-        ("AGE-BLX", AGE_BLX), 
-        ("AGE-CA", AGE_CA), 
-#        ("AM-(10,1.0)", AM_10_1),
-#        ("AM-(10,0.1)", AM_10_01),
-#        ("AM-(10,0.1mej)", AM_10_01mej)
+#        ("AGE-BLX", AGE_BLX), 
+#        ("AGE-CA", AGE_CA), 
+        ("BMB", BMB),
+        ("ES", ES),
+        ("ILS", ILS),
+        ("ILS-ES", ILS_ES),
+        ("VNS", VNS),
     ]
     
     parametros = ["pc", "pr", "ft", "tm"]
@@ -62,8 +75,6 @@ def main():
                 nombre_archivo = "Instancias_APC/" + db + "_" + str(numero+1) + ".arff"
                 particiones.append(leerDatos(nombre_archivo))
         
-            filas = ["Particion " + str(x + 1) for x in range(PARTICIONES)]    
-            
             # CROSS-VALIDATION
             
             # La partición 0 tiene las medias del resto de particiones 
@@ -82,13 +93,13 @@ def main():
                         entrenamiento += particiones[j]
                 
                 tiempo_ini = time.time()
-                pesos = entrenador(entrenamiento)
+                pesos = entrenador(entrenamiento[0], entrenamiento[1])
                 tiempo_fin = time.time() 
                 
                 tiempo_s = tiempo_fin - tiempo_ini
-                pc = porcentajeClasificacion(entrenamiento, evaluacion, pesos)
-                pr = porcentajeReduccion(pesos)
-                fitness = funcionEvaluacion(entrenamiento, evaluacion, pesos)
+                pc = porcentaje_clasificacion(entrenamiento[0], entrenamiento[1], evaluacion[0], evaluacion[1], pesos, )
+                pr = porcentaje_reduccion(pesos)
+                fitness = funcion_evaluacion(entrenamiento[0], entrenamiento[1], evaluacion[0], evaluacion[1], pesos)
 
                 datos[nombre][db][i+1]["pc"] = pc
                 datos[nombre][db][i+1]["pr"] = pr

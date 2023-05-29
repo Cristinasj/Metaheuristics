@@ -41,8 +41,8 @@ def main():
 
     basesDatos = [
         "diabetes", 
-#        "ozone-320", 
-#        "spectf-heart"
+        "ozone-320", 
+        "spectf-heart"
     ]
 
     algoritmos = [
@@ -94,9 +94,9 @@ def main():
                 tiempo_fin = time.time() 
                 
                 tiempo_s = tiempo_fin - tiempo_ini
-                pc = porcentaje_clasificacion(entrenamiento, evaluacion, pesos)
+                pc = porcentaje_clasificacion(entrenamiento[0], entrenamiento[1], evaluacion[0], evaluacion[1], pesos, )
                 pr = porcentaje_reduccion(pesos)
-                fitness = funcion_evaluacion(entrenamiento, evaluacion, pesos)
+                fitness = funcion_evaluacion(entrenamiento[0], entrenamiento[1], evaluacion[0], evaluacion[1], pesos)
 
                 datos[nombre][db][i+1]["pc"] = pc
                 datos[nombre][db][i+1]["pr"] = pr

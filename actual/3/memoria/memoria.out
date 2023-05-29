@@ -1,0 +1,61 @@
+\BOOKMARK [1][-]{section.1}{Descripci\363n del problema de la asignaci\363n con restricciones.}{}% 1
+\BOOKMARK [1][-]{section.2}{Descripci\363n de la implementaci\363n com\372n y representaci\363n del problema para su resoluci\363n.}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Clase PAR:}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Clase Cluster:}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Representaci\363n:}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Datos:}{subsection.2.3}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Restricciones:}{subsection.2.3}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Soluci\363n:}{subsection.2.3}% 8
+\BOOKMARK [3][-]{subsubsection.2.3.4}{Operaciones sobre los clusters:}{subsection.2.3}% 9
+\BOOKMARK [3][-]{subsubsection.2.3.5}{Operaciones sobre PAR:}{subsection.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Calcular Infeasibility parcial.}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.5}{Funci\363n objetivo.}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{M\351todos de resoluci\363n del problema.}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Algoritmo de B\372squeda Local.}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Generador de vecinos}{subsection.3.1}% 15
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Funci\363n objetivo}{subsection.3.1}% 16
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Criterio de aceptaci\363n.}{subsection.3.1}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Exploraci\363n del entorno.}{subsection.3.1}% 18
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Desarrollo del algoritmo.}{subsection.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.2}{Algoritmo de B\372squeda Multiarranque B\341sica \(BMB\).}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Algoritmo de Enfriamiento Simulado \(ES\).}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Exploraci\363n del entorno.}{subsection.3.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Criterios de aceptaci\363n.}{subsection.3.3}% 23
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Operador de vecino.}{subsection.3.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Calculo de temperatura inicial y final.}{subsection.3.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.3.5}{Esquema de enfriamiento.}{subsection.3.3}% 26
+\BOOKMARK [3][-]{subsubsection.3.3.6}{Condici\363n de enfriamiento.}{subsection.3.3}% 27
+\BOOKMARK [3][-]{subsubsection.3.3.7}{Criterios de parada.}{subsection.3.3}% 28
+\BOOKMARK [3][-]{subsubsection.3.3.8}{Implementaci\363n del algoritmo.}{subsection.3.3}% 29
+\BOOKMARK [2][-]{subsection.3.4}{Algoritmo de B\372squeda Local Reiterada \(ILS\).}{section.3}% 30
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Operador de mutaci\363n de segmento fijo.}{subsection.3.4}% 31
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Implementaci\363n del algoritmo.}{subsection.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.5}{Algoritmo h\355brido ILS y ES \(ILS-ES\).}{section.3}% 33
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Implementaci\363n del algoritmo.}{subsection.3.5}% 34
+\BOOKMARK [1][-]{section.4}{Algoritmo de comparaci\363n.}{}% 35
+\BOOKMARK [2][-]{subsection.4.1}{Algoritmo Greedy.}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Funci\363n para asignar un cluster}{subsection.4.1}% 37
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Desarrollo del algoritmo.}{subsection.4.1}% 38
+\BOOKMARK [1][-]{section.5}{Proceso de implementaci\363n.}{}% 39
+\BOOKMARK [2][-]{subsection.5.1}{Manual de uso.}{section.5}% 40
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Compilar:}{subsection.5.1}% 41
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Ejecuci\363n:}{subsection.5.1}% 42
+\BOOKMARK [1][-]{section.6}{Experimentos y an\341lisis de resultados.}{}% 43
+\BOOKMARK [2][-]{subsection.6.1}{Descripci\363n de los casos.}{section.6}% 44
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Semillas escogidas.}{subsection.6.1}% 45
+\BOOKMARK [2][-]{subsection.6.2}{Teorema No Free Lunch}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.3}{Resultados obtenidos.}{section.6}% 47
+\BOOKMARK [3][-]{subsubsection.6.3.1}{BMB.}{subsection.6.3}% 48
+\BOOKMARK [3][-]{subsubsection.6.3.2}{ES-Proporcional.}{subsection.6.3}% 49
+\BOOKMARK [3][-]{subsubsection.6.3.3}{ILS.}{subsection.6.3}% 50
+\BOOKMARK [3][-]{subsubsection.6.3.4}{ILS-ES.}{subsection.6.3}% 51
+\BOOKMARK [2][-]{subsection.6.4}{An\341lisis de resultados. }{section.6}% 52
+\BOOKMARK [3][-]{subsubsection.6.4.1}{10\045 de restricciones.}{subsection.6.4}% 53
+\BOOKMARK [3][-]{subsubsection.6.4.2}{20\045 de restricciones.}{subsection.6.4}% 54
+\BOOKMARK [2][-]{subsection.6.5}{Otros experimentos: Distintos esquemas de enfriamiento para ES.}{section.6}% 55
+\BOOKMARK [3][-]{subsubsection.6.5.1}{Cauchy.}{subsection.6.5}% 56
+\BOOKMARK [3][-]{subsubsection.6.5.2}{Cauchy modificado.}{subsection.6.5}% 57
+\BOOKMARK [3][-]{subsubsection.6.5.3}{Boltzmann.}{subsection.6.5}% 58
+\BOOKMARK [3][-]{subsubsection.6.5.4}{Boltzmann modificado.}{subsection.6.5}% 59
+\BOOKMARK [3][-]{subsubsection.6.5.5}{Constante.}{subsection.6.5}% 60
+\BOOKMARK [3][-]{subsubsection.6.5.6}{Estudio y comparaci\363n de los distintos enfriamientos.}{subsection.6.5}% 61
