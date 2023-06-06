@@ -57,8 +57,8 @@ def main():
         ("BMB", BMB),
         ("ES", ES),
         ("ILS", ILS),
-        ("ILS-ES", ILS_ES),
-        ("VNS", VNS),
+#        ("ILS-ES", ILS_ES),
+#        ("VNS", VNS),
     ]
     
     parametros = ["pc", "pr", "ft", "tm"]
