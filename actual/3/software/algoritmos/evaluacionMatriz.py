@@ -1,6 +1,7 @@
 import numpy as np 
 from typing import List
 
+
 def distancia(uno: np.array, otro:np.array, pesos:np.array =None):  
     if len(uno) != len(otro): 
         raise Exception("Longitud diferente")

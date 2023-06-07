@@ -1,8 +1,19 @@
 import numpy as np 
 from algoritmos.evaluacionMatriz import funcionEvaluacionLeaveOneOut
 from numpy import random 
-from algoritmos.geneticos import mutacion
 
+def mutacion(w, i):
+  '''
+  Obtener vecino de w
+  '''
+  w_nuevo = w.copy()
+  w_nuevo[i] += np.random.normal(0, 0.3)
+  if (w_nuevo[i] < 0):
+    w_nuevo[i] = 0
+  if (w_nuevo[i] > 1):
+    w_nuevo[i] = 1
+
+  return w_nuevo
 def BL(entrenamiento, etiquetas):
   w_ini = np.random.rand(len(entrenamiento[0]))
   max_iter = 1000
@@ -21,7 +32,7 @@ def BL(entrenamiento, etiquetas):
   while(contador_greedy < len(w)*10 and iterations < max_iter):
 
     #Se calcula el fitness para w
-    fitness = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w, 0.5)
+    fitness = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w)
 
     #Actualizar fitness y w si procede
     if (fitness > fitness_actual):

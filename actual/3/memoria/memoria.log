@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2021.12.5)  29 MAY 2023 05:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2021.12.5)  6 JUN 2023 18:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -168,6 +168,15 @@ Package: chngpage 2009/10/20 v1.2b change page layout
 \c@cp@cnt=\count96
 \c@cp@tempcnt=\count97
 )
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/02/04 v3.8 Customized lists
+\labelindent=\skip56
+\enit@outerparindent=\dimen109
+\enit@toks=\toks23
+\enit@inbox=\box29
+\enit@count@id=\count98
+\enitdp@description=\count99
+)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
 
@@ -177,20 +186,20 @@ Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
-\captionmargin=\dimen109
-\captionmargin@=\dimen110
-\captionwidth=\dimen111
-\caption@tempdima=\dimen112
-\caption@indent=\dimen113
-\caption@parindent=\dimen114
-\caption@hangindent=\dimen115
+\captionmargin=\dimen110
+\captionmargin@=\dimen111
+\captionwidth=\dimen112
+\caption@tempdima=\dimen113
+\caption@indent=\dimen114
+\caption@parindent=\dimen115
+\caption@hangindent=\dimen116
 )
-\c@caption@flags=\count98
-\c@ContinuedFloat=\count99
+\c@caption@flags=\count100
+\c@ContinuedFloat=\count101
 Package caption Info: float package is loaded.
 )
-\c@subfigure=\count100
-\c@subtable=\count101
+\c@subfigure=\count102
+\c@subtable=\count103
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
@@ -239,14 +248,14 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen116
-\Hy@linkcounter=\count102
-\Hy@pagecounter=\count103
+\@linkdim=\dimen117
+\Hy@linkcounter=\count104
+\Hy@pagecounter=\count105
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count104
+\Hy@SavedSpaceFactor=\count106
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -258,12 +267,12 @@ Package hyperref Info: Plain pages OFF on input line 4534.
 Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
-\c@Hy@tempcnt=\count105
+\c@Hy@tempcnt=\count107
 LaTeX Info: Redefining \url on input line 5125.
-\XeTeXLinkMargin=\dimen117
-\Fld@menulength=\count106
-\Field@Width=\dimen118
-\Fld@charsize=\dimen119
+\XeTeXLinkMargin=\dimen118
+\Fld@menulength=\count108
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
 Package hyperref Info: Hyper figures OFF on input line 6380.
 Package hyperref Info: Link nesting OFF on input line 6385.
 Package hyperref Info: Hyper index ON on input line 6388.
@@ -273,23 +282,23 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6405.
 Package hyperref Info: PDF/A mode OFF on input line 6410.
 LaTeX Info: Redefining \ref on input line 6450.
 LaTeX Info: Redefining \pageref on input line 6454.
-\Hy@abspage=\count107
-\c@Item=\count108
-\c@Hfootnote=\count109
+\Hy@abspage=\count109
+\c@Item=\count110
+\c@Hfootnote=\count111
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
-\Fld@listcount=\count110
-\c@bookmark@seq@number=\count111
+\Fld@listcount=\count112
+\c@bookmark@seq@number=\count113
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip56
+\Hy@SectionHShift=\skip57
 )
 (/usr/share/texlive/texmf-dist/tex/latex/doclicense/doclicense.sty
 Package: doclicense 2018/06/10 v1.8.0 Support for putting documents under a lic
@@ -300,16 +309,16 @@ Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count112
-\calc@Bcount=\count113
-\calc@Adimen=\dimen120
-\calc@Bdimen=\dimen121
-\calc@Askip=\skip57
-\calc@Bskip=\skip58
+\calc@Acount=\count114
+\calc@Bcount=\count115
+\calc@Adimen=\dimen121
+\calc@Bdimen=\dimen122
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count114
-\calc@Cskip=\skip59
+\calc@Ccount=\count116
+\calc@Cskip=\skip60
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -322,36 +331,36 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks23
-\verbatim@line=\toks24
+\every@verbatim=\toks24
+\verbatim@line=\toks25
 \verbatim@in@stream=\read1
 )
-\doclicense@hsize=\skip60
+\doclicense@hsize=\skip61
 
 (/usr/share/texlive/texmf-dist/tex/latex/doclicense/doclicense-spanish.ldf
 File: doclicense-spanish.ldf 
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 30.
+Package hyperref Info: Option `colorlinks' set `true' on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count115
-\lst@gtempboxa=\box29
-\lst@token=\toks25
-\lst@length=\count116
-\lst@currlwidth=\dimen122
-\lst@column=\count117
-\lst@pos=\count118
-\lst@lostspace=\dimen123
-\lst@width=\dimen124
-\lst@newlines=\count119
-\lst@lineno=\count120
-\lst@maxwidth=\dimen125
+\lst@mode=\count117
+\lst@gtempboxa=\box30
+\lst@token=\toks26
+\lst@length=\count118
+\lst@currlwidth=\dimen123
+\lst@column=\count119
+\lst@pos=\count120
+\lst@lostspace=\dimen124
+\lst@width=\dimen125
+\lst@newlines=\count121
+\lst@lineno=\count122
+\lst@maxwidth=\dimen126
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
-\c@lstnumber=\count121
-\lst@skipnumbers=\count122
-\lst@framebox=\box30
+\c@lstnumber=\count123
+\lst@skipnumbers=\count124
+\lst@framebox=\box31
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2018/09/02 1.7 listings configuration
@@ -392,10 +401,10 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks26
-\XKV@tempa@toks=\toks27
+\XKV@toks=\toks27
+\XKV@tempa@toks=\toks28
 )
-\XKV@depth=\count123
+\XKV@depth=\count125
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -428,13 +437,13 @@ LaTeX Info: Redefining \ttfamily on input line 94.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
-\csq@reset=\count124
-\csq@gtype=\count125
-\csq@glevel=\count126
-\csq@qlevel=\count127
-\csq@maxlvl=\count128
-\csq@tshold=\count129
-\csq@ltx@everypar=\toks28
+\csq@reset=\count126
+\csq@gtype=\count127
+\csq@glevel=\count128
+\csq@qlevel=\count129
+\csq@maxlvl=\count130
+\csq@tshold=\count131
+\csq@ltx@everypar=\toks29
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2018/04/13 v5.2d csquotes generic definitions (JAW)
@@ -452,83 +461,59 @@ LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
-
-
-LaTeX Warning: Label `fig:es-cmp2' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp1' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp2' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp1' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp2' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp1' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp2' multiply defined.
-
-
-LaTeX Warning: Label `fig:es-cmp1' multiply defined.
-
 )
 \openout1 = `memoria.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
-LaTeX Font Info:    ... okay on input line 124.
-LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 124.
-LaTeX Font Info:    Try loading font information for LY1+ptm on input line 124.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 125.
+LaTeX Font Info:    Try loading font information for LY1+ptm on input line 125.
 
- (/usr/share/texlive/texmf-dist/tex/latex/ly1/ly1ptm.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/ly1/ly1ptm.fd
 File: ly1ptm.fd 2001/02/01 font definitions for LY1/ptm using Berry names.
 )
-LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Try loading font information for T1+SourceSansPro-LF on inp
-ut line 124.
+ut line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd
 File: T1SourceSansPro-LF.fd 2016/12/03 (autoinst) Font definitions for T1/Sourc
 eSansPro-LF.
 )
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 124.
-LaTeX Info: Redefining \. on input line 124.
-LaTeX Info: Redefining \% on input line 124.
+(Font)              scaled to size 12.0pt on input line 125.
+LaTeX Info: Redefining \. on input line 125.
+LaTeX Info: Redefining \% on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count130
-\scratchdimen=\dimen126
-\scratchbox=\box31
-\nofMPsegments=\count131
-\nofMParguments=\count132
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count133
-\MPscratchDim=\dimen127
-\MPnumerator=\count134
-\makeMPintoPDFobject=\count135
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count132
+\scratchdimen=\dimen127
+\scratchbox=\box32
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen128
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
+\everyMPtoPDFconversion=\toks31
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -550,8 +535,8 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring ON on input line 124.
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring ON on input line 125.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -559,91 +544,62 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count136
+\c@section@level=\count138
 )
-LaTeX Info: Redefining \ref on input line 124.
-LaTeX Info: Redefining \pageref on input line 124.
-LaTeX Info: Redefining \nameref on input line 124.
+LaTeX Info: Redefining \ref on input line 125.
+LaTeX Info: Redefining \pageref on input line 125.
+LaTeX Info: Redefining \nameref on input line 125.
 
 (./memoria.out) (./memoria.out)
 \@outlinefile=\write3
 \openout3 = `memoria.out'.
 
-\c@lstlisting=\count137
-<ugr.png, id=249, 508.17854pt x 508.17854pt>
+\c@lstlisting=\count139
+<ugr.png, id=160, 508.17854pt x 508.17854pt>
 File: ugr.png Graphic file (type png)
 <use ugr.png>
-Package pdftex.def Info: ugr.png  used on input line 131.
+Package pdftex.def Info: ugr.png  used on input line 132.
 (pdftex.def)             Requested size: 254.08865pt x 254.08865pt.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 133.
+(Font)              scaled to size 12.0pt on input line 134.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/sc' will be
-(Font)              scaled to size 14.4pt on input line 133.
+(Font)              scaled to size 14.4pt on input line 134.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 133.
+(Font)              <14.4> on input line 134.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 133.
+(Font)              <7> on input line 134.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 133.
+(Font)              scaled to size 10.0pt on input line 134.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
-(Font)              scaled to size 24.88pt on input line 135.
+(Font)              scaled to size 24.88pt on input line 136.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/n' will be
-(Font)              scaled to size 24.88pt on input line 135.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.137 ..., BL, AGE-BLX, AGE-CA, BMB, ES, ILS, ILS_
-                                                  ES, VNS \\
-? 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 137.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 137.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 137.
-
-! LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.137 ...BLX, AGE-CA, BMB, ES, ILS, ILS_ES, VNS \\
-                                                  
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.137 ...BLX, AGE-CA, BMB, ES, ILS, ILS_ES, VNS \\
-                                                  
-? 
+(Font)              scaled to size 24.88pt on input line 136.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 141.
-LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/it' will be
 (Font)              scaled to size 14.4pt on input line 142.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 158.
+LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/it' will be
+(Font)              scaled to size 14.4pt on input line 143.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 148.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 148.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 159.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-<doclicense-CC-by-nc-sa.pdf, id=254, 121.45375pt x 43.16125pt>
-File: doclicense-CC-by-nc-sa.pdf Graphic file (type pdf)
-<use doclicense-CC-by-nc-sa.pdf>
-Package pdftex.def Info: doclicense-CC-by-nc-sa.pdf  used on input line 159.
-(pdftex.def)             Requested size: 120.0pt x 42.64413pt.
- [1
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ugr.png
 
 pdfTeX warning: pdflatex (file ./ugr.png): large interlaced PNG might cause out
  of memory (use non-interlaced PNG to fix this)
->] [2 </usr/share/texlive/texmf-dist/tex/latex/doclicense/images/doclicense-CC-
-by-nc-sa.pdf>]
+>]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
 (Font)              scaled to size 17.28pt on input line 167.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/n' will be
@@ -655,545 +611,169 @@ LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/n' will be
 (Font)              scaled to size 12.0pt on input line 3.
-LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 13.
+)
+\tf@toc=\write4
+\openout4 = `memoria.toc'.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 ...e {5.1}Manual de uso.}{26}{subsection.5.1}
-                                                  % [1])
-\tf@toc=\write4
-\openout4 = `memoria.toc'.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
 l.169 
-       [2] [3]
+       [1] [2] (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+Underfull \hbox (badness 10000) in paragraph at lines 174--177
+
+ []
+
+[3]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 214.
- [4]
+(Font)              scaled to size 14.4pt on input line 182.
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--197
+
+ []
+
+[4]
 LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 265.
- [5] [6]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 350.
- [7]
-LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/it' will be
-(Font)              scaled to size 14.4pt on input line 421.
- [8] [9] [10] [11] [12] [13] [14] [15] [16]
-[17] [18] [19] [20]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 864.
- [21] [22] [23] [24] [25] [26]
-Overfull \hbox (10.41167pt too wide) in paragraph at lines 1074--1075
-[]\T1/SourceSansPro-LF/m/n/12 Para ge-ne-rar los grá-fi-cos sim-ple-men-te te-n
-e-mos que eje-cu-tar el pro-gra-ma y des-pues eje-cu-tar \T1/cmtt/m/n/12 gnuplo
-t
- []
+(Font)              scaled to size 8.0pt on input line 205.
 
-[27] [28]
-LaTeX Font Info:    Font shape `T1/SourceSansPro-LF/b/it' will be
-(Font)              scaled to size 12.0pt on input line 1131.
+Underfull \hbox (badness 10000) in paragraph at lines 208--216
 
-Overfull \hbox (32.0942pt too wide) in paragraph at lines 1127--1139
-[][] 
  []
 
 
-Overfull \hbox (24.61821pt too wide) in paragraph at lines 1145--1157
-[][] 
+Overfull \hbox (73.36835pt too wide) in paragraph at lines 208--216
+\T1/SourceSansPro-LF/m/n/12 se mues-tra en es-te pseu-do-có-di-go pa-ra_cada i 
+en (0, 1, 2, ..., t_poblacion): pe-sos = np.random.rand(datos.tamaño())
  []
 
 
-Overfull \hbox (30.67822pt too wide) in paragraph at lines 1164--1176
-[][] 
+Overfull \hbox (32.60086pt too wide) in paragraph at lines 217--226
+\T1/SourceSansPro-LF/m/n/12 que de-pen-de de los va-lo-res de los pa-dres. El p
+seu-do-có-di-go es el si-guien-te: fun-cion cru-ce_BLX(cromosoma
+ []
+
+[5]
+Overfull \hbox (81.73476pt too wide) in paragraph at lines 246--257
+\T1/SourceSansPro-LF/m/n/12 lor al ran-go [0,1]. fun-cion re-lief(conjunto_entr
+enamiento)  pe-sos = Array.zeros(conjunto_entrenamiento.longitudes)
  []
 
 
-Overfull \hbox (17.65819pt too wide) in paragraph at lines 1181--1193
-[][] 
+Overfull \hbox (96.22247pt too wide) in paragraph at lines 246--257
+\T1/SourceSansPro-LF/m/n/12 loop i in en-tre-na-mien-to  ami-go = con-jun-to_en
+trenamiento[i].amigo() enemi-go = con-jun-to_entrenamiento[i].enemigo()
  []
 
-[29]
+[6]
+Overfull \hbox (132.70482pt too wide) in paragraph at lines 260--279
+\T1/SourceSansPro-LF/m/n/12 sos_inciales[posicion].variar(media, des-via-cion_s
+tandard).truncar()  fun-cion ex-plo-ra-cion_entorno(conjunto_entrenamiento)
+ []
 
-LaTeX Warning: File `bmb-ecoli.png' not found on input line 1201.
+
+Overfull \hbox (9.84517pt too wide) in paragraph at lines 260--279
+\T1/SourceSansPro-LF/m/n/12 pe-sos_actuales = so-lu-cio-nes_aleatorias(0,1,conj
+unto_entrenamiento.longitudes) eva-lua-cion_actual
+ []
 
 
-! Package pdftex.def Error: File `bmb-ecoli.png' not found: using draft setting
-.
+Overfull \hbox (103.43552pt too wide) in paragraph at lines 260--279
+\T1/SourceSansPro-LF/m/n/12 = eva-luar-Lea-ve1out(conjunto_entrenamiento, pe-so
+s_actuales) loop mien-tras me-jo-ra-ble y no_lleva_mucho_ejecutando
+ []
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1201 ...udegraphics[scale = 0.40]{bmb-ecoli.png}
-                                                  
+
+Overfull \hbox (33.92793pt too wide) in paragraph at lines 260--279
+\T1/SourceSansPro-LF/m/n/12 Lea-ve1out(conjunto_entrenamiento, ve-cino) if eva-
+lua-cion_vecino >eva-lua-cion_actual  eva-lua-cion_actual
+ []
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.281     #
+            Se ordena la poblaciÃ³n
+? 
+! You can't use `macro parameter character #' in horizontal mode.
+l.284         #
+                CompeticiÃ³n entre 4 individuos
 ? 
 
-LaTeX Warning: File `bmb-newthyroid.png' not found on input line 1209.
+Overfull \hbox (23.64647pt too wide) in paragraph at lines 280--287
+\T1/SourceSansPro-LF/m/n/12 Com-pe-ti-ción en-tre 4 in-di-vi-duos se-lec-cion =
+ po-bla-cion.elegir4individuos() c1, c2 = tor-neo-Te-tra(seleccion) 
+ []
 
-
-! Package pdftex.def Error: File `bmb-newthyroid.png' not found: using draft se
-tting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1209 ...aphics[scale = 0.40]{bmb-newthyroid.png}
-                                                  
+! You can't use `macro parameter character #' in vertical mode.
+l.288         #
+                Se hacen los cruces
+? 
+! You can't use `macro parameter character #' in vertical mode.
+l.291         #
+                Se aplican las mutaciones
 ? 
 
-Overfull \hbox (11.61029pt too wide) in paragraph at lines 1227--1239
-[][] 
+Overfull \hbox (42.63515pt too wide) in paragraph at lines 291--295
+[]\T1/SourceSansPro-LF/m/n/12 Se apli-can las mu-ta-cio-nes mu-tar(seleccion_al
+eatoria(poblacion)) h1.evaluacion = eva-luar(h1) h2.evaluacion
  []
 
-[30]
-Overfull \hbox (27.1142pt too wide) in paragraph at lines 1245--1257
-[][] 
- []
-
-
-Overfull \hbox (17.8502pt too wide) in paragraph at lines 1263--1275
-[][] 
- []
-
-
-Overfull \hbox (13.51822pt too wide) in paragraph at lines 1281--1293
-[][] 
- []
-
-[31]
-
-LaTeX Warning: File `es-temp-ecoli-10.png' not found on input line 1304.
-
-
-! Package pdftex.def Error: File `es-temp-ecoli-10.png' not found: using draft 
-setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1304 ...hics[scale = 0.35]{es-temp-ecoli-10.png}
-                                                  
+! You can't use `macro parameter character #' in vertical mode.
+l.296         #
+                CompeticiÃ³n para entrar en la poblacion
 ? 
 
-LaTeX Warning: File `es-ecoli-10.png' not found on input line 1312.
-
-
-! Package pdftex.def Error: File `es-ecoli-10.png' not found: using draft setti
-ng.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1312 ...egraphics[scale = 0.35]{es-ecoli-10.png}
-                                                  
-? 
-
-Overfull \hbox (37.6622pt too wide) in paragraph at lines 1331--1343
-[][] 
+Overfull \hbox (7.13942pt too wide) in paragraph at lines 296--305
+\T1/SourceSansPro-LF/m/n/12 cion[0] se-lec-cion[3] = po-bla-cion[1] se-lec-cion
+.ordenar() po-bla-cion[0] = se-lec-cion.mejor() po-bla-cion[1]
  []
 
-[32]
-Overfull \hbox (41.38219pt too wide) in paragraph at lines 1348--1360
-[][] 
- []
-
-
-Overfull \hbox (35.87422pt too wide) in paragraph at lines 1366--1378
-[][] 
- []
-
-
-Overfull \hbox (34.41014pt too wide) in paragraph at lines 1384--1396
-[][] 
- []
-
-[33]
-
-LaTeX Warning: File `ecoli-ils.png' not found on input line 1402.
-
-
-! Package pdftex.def Error: File `ecoli-ils.png' not found: using draft setting
-.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1402 ...udegraphics[scale = 0.35]{ecoli-ils.png}
-                                                  
-? 
-
-LaTeX Warning: File `iris-ils.png' not found on input line 1429.
-
-
-! Package pdftex.def Error: File `iris-ils.png' not found: using draft setting.
-
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1429 ...ludegraphics[scale = 0.35]{iris-ils.png}
-                                                  
-? 
-[34]
-Overfull \hbox (26.92218pt too wide) in paragraph at lines 1440--1452
-[][] 
- []
-
-
-Overfull \hbox (25.23021pt too wide) in paragraph at lines 1458--1470
-[][] 
- []
-
-
-Overfull \hbox (25.3862pt too wide) in paragraph at lines 1476--1488
-[][] 
- []
-
-
-Overfull \hbox (23.87422pt too wide) in paragraph at lines 1494--1506
-[][] 
- []
-
-[35]
-
-LaTeX Warning: File `ecoli-ils-es.png' not found on input line 1515.
-
-
-! Package pdftex.def Error: File `ecoli-ils-es.png' not found: using draft sett
-ing.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1515 ...graphics[scale = 0.35]{ecoli-ils-es.png}
-                                                  
-? 
-
-LaTeX Warning: File `iris-ils-es.png' not found on input line 1523.
-
-
-! Package pdftex.def Error: File `iris-ils-es.png' not found: using draft setti
-ng.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1523 ...egraphics[scale = 0.35]{iris-ils-es.png}
-                                                  
-? 
-[36]
-Overfull \hbox (33.33023pt too wide) in paragraph at lines 1550--1562
-[][] 
- []
-
-
-Overfull \hbox (34.67421pt too wide) in paragraph at lines 1568--1580
-[][] 
- []
-
-[37]
-Overfull \hbox (37.07423pt too wide) in paragraph at lines 1599--1611
-[][] 
- []
-
-
-Overfull \hbox (28.8422pt too wide) in paragraph at lines 1617--1629
-[][] 
- []
-
-[38] [39]
-Overfull \hbox (32.97021pt too wide) in paragraph at lines 1668--1680
-[][] 
- []
-
-
-Overfull \hbox (40.01416pt too wide) in paragraph at lines 1686--1698
-[][] 
- []
-
-
-Overfull \hbox (27.22224pt too wide) in paragraph at lines 1703--1715
-[][] 
- []
-
-
-Overfull \hbox (27.25818pt too wide) in paragraph at lines 1721--1733
-[][] 
- []
-
-[40] [41]
-Overfull \hbox (25.74625pt too wide) in paragraph at lines 1754--1766
-[][] 
- []
-
-
-Overfull \hbox (45.94215pt too wide) in paragraph at lines 1772--1784
-[][] 
- []
-
-
-Overfull \hbox (34.21819pt too wide) in paragraph at lines 1790--1802
-[][] 
- []
-
-[42]
-Overfull \hbox (42.69023pt too wide) in paragraph at lines 1807--1819
-[][] 
- []
-
-[43]
-Overfull \hbox (48.34227pt too wide) in paragraph at lines 1834--1846
-[][] 
- []
-
-
-Overfull \hbox (39.52216pt too wide) in paragraph at lines 1852--1864
-[][] 
- []
-
-
-Overfull \hbox (41.17819pt too wide) in paragraph at lines 1869--1881
-[][] 
- []
-
-
-Overfull \hbox (41.5142pt too wide) in paragraph at lines 1886--1898
-[][] 
- []
-
-[44]
-Overfull \hbox (25.44624pt too wide) in paragraph at lines 1914--1926
-[][] 
- []
-
-
-Overfull \hbox (44.95816pt too wide) in paragraph at lines 1931--1943
-[][] 
- []
-
-
-Overfull \hbox (31.80621pt too wide) in paragraph at lines 1951--1963
-[][] 
- []
-
-[45]
-Overfull \hbox (34.1222pt too wide) in paragraph at lines 1969--1981
-[][] 
- []
-
-[46]
-Overfull \hbox (24.43823pt too wide) in paragraph at lines 1996--2008
-[][] 
- []
-
-
-Overfull \hbox (44.41817pt too wide) in paragraph at lines 2014--2026
-[][] 
- []
-
-
-Overfull \hbox (27.57025pt too wide) in paragraph at lines 2032--2044
-[][] 
- []
-
-
-Overfull \hbox (38.15414pt too wide) in paragraph at lines 2049--2061
-[][] 
- []
-
-[47]
-Overfull \hbox (45.25505pt too wide) in paragraph at lines 2070--2082
-[]| [] 
- []
-
-
-Overfull \hbox (45.83095pt too wide) in paragraph at lines 2088--2100
-[]| [] 
- []
-
-
-Overfull \hbox (45.24295pt too wide) in paragraph at lines 2106--2118
-[]| [] 
- []
-
-[48]
-Overfull \hbox (43.85098pt too wide) in paragraph at lines 2124--2136
-[]| [] 
- []
-
-
-LaTeX Warning: File `cmp-tmp/rand-temp.png' not found on input line 2146.
-
-
-! Package pdftex.def Error: File `cmp-tmp/rand-temp.png' not found: using draft
- setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2146 ...ics[scale = 0.30]{cmp-tmp/rand-temp.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/rand-es.png' not found on input line 2153.
-
-
-! Package pdftex.def Error: File `cmp-tmp/rand-es.png' not found: using draft s
-etting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2153 ...phics[scale = 0.30]{cmp-tmp/rand-es.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/iris-temp.png' not found on input line 2162.
-
-
-! Package pdftex.def Error: File `cmp-tmp/iris-temp.png' not found: using draft
- setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2162 ...hics[scale = 0.3]{cmp-tmp/iris-temp.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/iris-es.png' not found on input line 2170.
-
-
-! Package pdftex.def Error: File `cmp-tmp/iris-es.png' not found: using draft s
-etting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2170 ...aphics[scale = 0.3]{cmp-tmp/iris-es.png}
-                                                  
-? 
-[49]
-
-LaTeX Warning: File `cmp-tmp/newthyroid-temp.png' not found on input line 2184.
-
-
-
-! Package pdftex.def Error: File `cmp-tmp/newthyroid-temp.png' not found: using
- draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2184 ...ale = 0.35]{cmp-tmp/newthyroid-temp.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/newthyroid-es.png' not found on input line 2192.
-
-
-! Package pdftex.def Error: File `cmp-tmp/newthyroid-es.png' not found: using d
-raft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2192 ...scale = 0.35]{cmp-tmp/newthyroid-es.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/ecoli-temp.png' not found on input line 2204.
-
-
-! Package pdftex.def Error: File `cmp-tmp/ecoli-temp.png' not found: using draf
-t setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2204 ...cs[scale = 0.35]{cmp-tmp/ecoli-temp.png}
-                                                  
-? 
-
-LaTeX Warning: File `cmp-tmp/ecoli-es.png' not found on input line 2212.
-
-
-! Package pdftex.def Error: File `cmp-tmp/ecoli-es.png' not found: using draft 
-setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2212 ...hics[scale = 0.35]{cmp-tmp/ecoli-es.png}
-                                                  
-? 
-[50] [51]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2252.
- [52]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2252.
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 370.
+ [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 370.
  (./memoria.aux
 LaTeX Info: Redefining \. on input line 23.
 LaTeX Info: Redefining \% on input line 23.
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2252.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2252.
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 370.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 370.
 Package rerunfilecheck Info: File `memoria.out' has not changed.
-(rerunfilecheck)             Checksum: B62F5B048C2B1FA32CA297C6C99BAC9C;4974.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+(rerunfilecheck)             Checksum: 7AE72D9B270AC1BF73C1DE59E58C0FAE;2906.
  ) 
 Here is how much of TeX's memory you used:
- 13884 strings out of 492615
- 203224 string characters out of 6131390
- 600424 words of memory out of 5000000
- 16960 multiletter control sequences out of 15000+600000
- 157871 words of font info for 61 fonts, out of 8000000 for 9000
+ 12946 strings out of 492615
+ 191763 string characters out of 6131390
+ 487929 words of memory out of 5000000
+ 16567 multiletter control sequences out of 15000+600000
+ 133203 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,12n,77p,1099b,2000s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/sourcesanspro/a_5tbsmu.enc}{/u
-sr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/tex
+ 42i,11n,65p,815b,571s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
+e/texmf-dist/fonts/enc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/tex
 mf-dist/fonts/enc/dvips/sourcesanspro/a_ggs4wk.enc}{/usr/share/texlive/texmf-di
 st/fonts/enc/dvips/sourcesanspro/a_mhce32.enc}</usr/share/texlive/texmf-dist/fo
 nts/type1/adobe/sourcesanspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-BoldIt.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sftt1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on memoria.pdf (54 pages, 719511 bytes).
+dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-It.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/adobe/sourcesanspro/SourceSansPro-Regular.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on memoria.pdf (18 pages, 421658 bytes).
 PDF statistics:
- 1209 PDF objects out of 1440 (max. 8388607)
- 1126 compressed objects within 12 object streams
- 588 named destinations out of 1000 (max. 500000)
- 499 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 318 words of extra memory for PDF output out of 10000 (max. 10000000)
 
