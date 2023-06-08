@@ -1,4 +1,5 @@
 \documentclass[12pt, spanish]{article}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 \usepackage[spanish]{babel}
 \selectlanguage{spanish}
 \usepackage{natbib}
@@ -13,6 +14,9 @@
 \usepackage{float}
 \usepackage{chngpage}
 \usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \usepackage{subcaption}
 
@@ -199,121 +203,201 @@ El porcentaje de clasificación nos dice el porcentaje de aciertos de nuestro cl
 El operador distancia nos da la distancia cuadrada, euclídea y ponderada de un elemento a otro. La distancia es cuadada para ahorrar calculos y acelerar el proceso ya que no nos interesa el valor real en el cálculo de 1NN. La distancia es euclídea porque todas las variables en esta práctica son continuas. 
 El operador distancia está implementado de la siguiente forma: 
 
-function distancia (array\_caracteristicas uno, array\_caracteristicas otro, array\_caracteristicas pesos):  
-    if pesos.esNulo( ): 
-	    pesos.llenarDeUnos( )
-devolver sumatoria((uno-otro)² * pesos)
+function distancia (array\_caracteristicas uno, array\_caracteristicas otro, array\_caracteristicas pesos): \\ 
+\tab    if pesos.esNulo( ):\\ 
+\tab\tab 	    pesos.llenarDeUnos( )\\
+devolver sumatoria((uno-otro)² * pesos)\\
 
 \subsection{Pseudocódigo del proceso de generación de soluciones aleatorias}
 La solución inicial se obtendrá de manera aleatoria en todos los casos, utilizando una distribución uniforme en el rango de [0, 1].\\
 \newline
-Para implementar esto, se utiliza la función rand de la biblioteca numpy y el módulo random como se muestra en este pseudocódigo
-para\_cada i en (0, 1, 2, ...,  t\_poblacion):
-       	pesos = np.random.rand(datos.tamaño())
-        	evaluacion = evaluar(datos, pesos) 
-	poblacion.incluir(pesos, evaluacion)
-end\_para
-\subsection{Operador de cruce BLX}
-Recibe dos cromosomas y genera dos descendientes generados aleatoriamente en un intervalo que depende de los valores de los padres. El pseudocódigo es el siguiente: 
-funcion cruce\_BLX(cromosoma c1 ,cromosoma c2) devuelve una pareja de cromosomas:
-    para\_cada gen1 y gen2 en c1 y c2 :	
-	alfa = 0.3
-	min, max = devolverMinMax(gen1, gen2)
-    	l = max-min
-    	b1 = min-l*alfa
-    	b2 = cmax+l*0.3
-    devolver np.random.uniform(b1, b2), np.random.uniform(b1, b2)
-\subsection{Operador de Cruce Aritmético}
-Combina los pesos de los dos padres con una media aritmética con alfa aleatório. El pseudocódigo es el siguiente: 
-funcion cruce\_CA(cromosoma c1, cromosoma c2) -> devuelve una pareja de cromosomas: 
-    alpha = generar aleatorio 
-    salida1 = c1*alpha + c2*(1-alpha)
-    salida2 = c1*(1-alpha) + c2*alpha
-    return salida1, salida2
-\subsection{Esquema de generación de vecinos en ES e ILS}
-La generación de vecinos en ES e ILS es similar a el operador de mutación de la práctica anterior y el operador de exploración de vecinos de la primera práctica. El pseudocódigo es el siguiente: 
+Para implementar esto, se utiliza la función rand de la biblioteca numpy y el módulo random como se muestra en este pseudocódigo:\\
+\\
+para\_cada i en (0, 1, 2, ...,  t\_poblacion):\\
+\tab       	pesos = np.random.rand(datos.tamaño())\\
+   \tab    	evaluacion = evaluar(datos, pesos) \\
+\tab	poblacion.incluir(pesos, evaluacion)\\
+end\_para\\
 
-funcion mutacion(i, j, poblacion):
-  poblacion[i][j] += np.random.normal(0, 0.3)
-  if (poblacion[i][j] < 0): poblacion[i][j] = 0
-  if (poblacion[i][j] > 1): poblacion[i][j] = 1
+\subsection{Operador de cruce BLX}
+Recibe dos cromosomas y genera dos descendientes generados aleatoriamente en un intervalo que depende de los valores de los padres. El pseudocódigo es el siguiente: \\
+\\
+funcion cruce\_BLX(cromosoma c1 ,cromosoma c2) devuelve una pareja de cromosomas:\\
+\tab    para\_cada gen1 y gen2 en c1 y c2 :	\\
+\tab\tab	alfa = 0.3\\
+\tab\tab	min, max = devolverMinMax(gen1, gen2)\\
+\tab\tab    	l = max-min\\
+\tab\tab   	b1 = min-l*alfa\\
+\tab\tab    	b2 = cmax+l*0.3\\
+\tab\tab    devolver np.random.uniform(b1, b2), np.random.uniform(b1, b2)\\
+
+\subsection{Operador de Cruce Aritmético}
+Combina los pesos de los dos padres con una media aritmética con alfa aleatório. El pseudocódigo es el siguiente: \\
+\\
+funcion cruce\_CA(cromosoma c1, cromosoma c2) -> devuelve una pareja de cromosomas: \\
+\tab    alpha = generar aleatorio \\
+\tab    salida1 = c1*alpha + c2*(1-alpha)\\
+\tab   salida2 = c1*(1-alpha) + c2*alpha\\
+\tab    return salida1, salida2\\
+
+
+\subsection{Esquema de generación de vecinos en ES e ILS}
+La generación de vecinos en ES es similar a el operador de mutación de la práctica anterior y el operador de exploración de vecinos de la primera práctica. El pseudocódigo es el siguiente: 
+
+funcion mutacion(i, j, poblacion):\\
+\tab  poblacion[i][j] += np.random.normal(0, 0.3)\\
+\tab  if (poblacion[i][j] < 0): poblacion[i][j] = 0\\
+\tab  if (poblacion[i][j] > 1): poblacion[i][j] = 1\\
+\\
+\\
+Para ILS es un poco diferente ya que se muta el vector entero y no solo una posición, y es de esta forma: 
+\tab funcion mutar(w):
+\tab\tab vector_mutado = w.copy()
+ \tab index = [i for i in range(len(w)) if w[i] > 0.4]
+  \tab np.random.shuffle(index)
+  \tab t = (int)(len(index)*0.1)
+  \tab   for i in range(0, t):
+ \tab  \tab vector_mutado[i] += np.random.normal(0, 0.3)
+   \tab \tab if (vector_mutado[i] < 0):
+ \tab \tab \tab vector_mutado[i] = 0
+ \tab \tab  if (vector_mutado[i] > 1):
+ \tab \tab \tab vector_mutado[i] = 1
+  \tab  return vector_mutado
 
 \pagebreak
 
 
 \section{Descripción de las metaheuristicas}
 \subsection{RELIEF }
-Se basa en encontrar el elemento más cercano de su misma clase (amigo) y elemento más cercano de diferente clase (enemigo). Para ello se utilizan los métodos amigo() y enemigo() de la clase Elemento. Se recorren todos los elemento y se actualizan los pesos, previamente inicializados a 0, sumando la distancia del enemigo y restando la distancia al amigo. Posteriormente se normaliza el valor al rango [0,1]. 
-funcion relief(conjunto\_entrenamiento) {
-	pesos = Array.zeros(conjunto\_entrenamiento.longitudes)
-	loop i in entrenamiento {
-		amigo = conjunto\_entrenamiento[i].amigo() 
-		enemigo = conjunto\_entrenamiento[i].enemigo() 
-		pesos.actualizar(amigo, enemigo) 
-	}
-	pesos.normalizar() 
-	devolver pesos
-}
+Se basa en encontrar el elemento más cercano de su misma clase (amigo) y elemento más cercano de diferente clase (enemigo). Para ello se utilizan los métodos amigo() y enemigo() de la clase Elemento. Se recorren todos los elemento y se actualizan los pesos, previamente inicializados a 0, sumando la distancia del enemigo y restando la distancia al amigo. Posteriormente se normaliza el valor al rango [0,1]. \\
+\\
+funcion relief(conjunto\_entrenamiento) {\\
+\tab	pesos = Array.zeros(conjunto\_entrenamiento.longitudes)\\
+\tab	loop i in entrenamiento {\\
+\tab\tab		amigo = conjunto\_entrenamiento[i].amigo() \\
+\tab\tab		enemigo = conjunto\_entrenamiento[i].enemigo() \\
+\tab		pesos.actualizar(amigo, enemigo) \\
+	}\\
+\tab	pesos.normalizar() \\
+\tab	devolver pesos\\
+}\\
 
 \pagebreak
 \subsection{BL}
-Para definir una busqueda local necesitamos generación de soluciones aleatorias, un operador de generación de vecinos y método de exploración del entorno. Queda aclarar que en la solución implementada no se genera el vecindario entero antes de realizar la búsqueda, sino se van generando vecinos de forma aleatoria hasta encontrar una mejoría. En el código fuente estas funciones no han sido implementadas por separado, sino todas juntas en en la función BL. 
-funcion soluciones\_aleatorias(min=0, max=1, tamaño\_vector) { 
-	devolver Aleatorio(min, max, tamaño\_vector) 
-}
-funcion generacion\_vecino(pesos\_inciales, desviacion\_standard, media, posicion) {
-	devolver pesos\_inciales[posicion].variar(media, desviacion\_standard).truncar()
-}
-funcion exploracion\_entorno(conjunto\_entrenamiento) {
-	pesos\_actuales = soluciones\_aleatorias(0,1,conjunto\_entrenamiento.longitudes)
-	evaluacion\_actual = evaluarLeave1out(conjunto\_entrenamiento, pesos\_actuales)
-	loop mientras mejorable y no\_lleva\_mucho\_ejecutando{
-		vecino = generacion\_vecino(pesos\_actuales, 0.2, 0, Permutacion)
-		evaluacion\_vecino = evaluarLeave1out(conjunto\_entrenamiento, vecino) 
-		if evaluacion\_vecino > evaluacion\_actual {
-			evaluacion\_actual = evaluacion\_vecino
-			pesos\_actuales  = vecino 
-		}
-	}	 
-} 
+Para definir una busqueda local necesitamos generación de soluciones aleatorias, un operador de generación de vecinos y método de exploración del entorno. Queda aclarar que en la solución implementada no se genera el vecindario entero antes de realizar la búsqueda, sino se van generando vecinos de forma aleatoria hasta encontrar una mejoría. En el código fuente estas funciones no han sido implementadas por separado, sino todas juntas en en la función BL. \\
+\\
+funcion soluciones\_aleatorias(min=0, max=1, tamaño\_vector) { \\
+\tab	devolver Aleatorio(min, max, tamaño\_vector) \\
+}\\
+funcion generacion\_vecino(pesos\_inciales, desviacion\_standard, media, posicion) {\\
+\tab	devolver pesos\_inciales[posicion].variar(media, desviacion\_standard).truncar()\\
+}\\
+funcion exploracion\_entorno(conjunto\_entrenamiento) {\\
+\tab	pesos\_actuales = soluciones\_aleatorias(0,1,conjunto\_entrenamiento.longitudes)\\
+\tab	evaluacion\_actual = evaluarLeave1out(conjunto\_entrenamiento, pesos\_actuales)\\
+\tab	loop mientras mejorable y no\_lleva\_mucho\_ejecutando{\\
+\tab		vecino = generacion\_vecino(pesos\_actuales, 0.2, 0, Permutacion)\\
+\tab		evaluacion\_vecino = evaluarLeave1out(conjunto\_entrenamiento, vecino) \\
+\tab		if evaluacion\_vecino > evaluacion\_actual {\\
+\tab\tab			evaluacion\_actual = evaluacion\_vecino\\
+	\tab\tab		pesos\_actuales  = vecino \\
+		}\\
+	}	 \\
+} \\
 \subsection{Algoritmos genéticos estacionarios}
-funcion estacionario(Poblacion matriz\_datos, funcion tipo\_cruce) devuelve un array de pesos:
-    # Se ordena la población
-    poblacion = ordenar(matriz\_datos, funcion\_evaluacion) 
-	 repetir 15000 veces:
-        # Competición entre 4 individuos
-        seleccion = poblacion.elegir4individuos()
-        c1, c2 = torneoTetra(seleccion)
+funcion estacionario(Poblacion matriz\_datos, funcion tipo\_cruce) devuelve un array de pesos:\\
+ \tab  \\\ Se ordena la población\\
+ \tab  poblacion = ordenar(matriz\_datos, funcion\_evaluacion) \\
+\tab	 repetir 15000 veces:\\
+   \tab\tab    \\\ Competición entre 4 individuos\\
+  \tab \tab   seleccion = poblacion.elegir4individuos()\\
+   \tab    c1, c2 = torneoTetra(seleccion)\\
+\\
+   \tab    \\\ Se hacen los cruces\\
+      \tab h1, h2 = tipo\_cruce(c1, c2)\\
+\\
+     \tab  \\\ Se aplican las mutaciones\\
+   \tab    mutar(seleccion\_aleatoria(poblacion))\\
+    \tab   h1.evaluacion = evaluar(h1)\\
+      \tab h2.evaluacion = evaluar(h2) \\
+\\
+\tab        \\\ Competición para entrar en la poblacion\\
+   \tab    seleccion[0] = h1\\
+   \tab    seleccion[1] = h2\\
+    \tab   seleccion[2] = poblacion[0]\\
+      \tab seleccion[3] = poblacion[1]\\
+     \tab  seleccion.ordenar()\\
+     \tab  poblacion[0] = seleccion.mejor()\\
+     \tab  poblacion[1] = seleccion.segundo\_mejor() \\
+     \tab  poblacion.ordenar() \\
+\\
+\tab    devolver poblacion.mejor\_cromosoma()\\
+\pagebreak
+\subsection{Enfriamiento simulado}
+\subsubsection{Esquema de enfiamiento}
+Se va a utilizar el esquema de Cauchy. Este es una forma de ajustar la temperatura en el algoritmo de enfriamiento simulado. En el esquema de Cauchy, la temperatura se reduce de acuerdo con una función específica conocida como función de enfriamiento de Cauchy.\\
+\\
+La función de enfriamiento de Cauchy se define de la siguiente manera:\\
 
-        # Se hacen los cruces
-        h1, h2 = tipo\_cruce(c1, c2)
+    \[ T_{k+1} = \frac{k}{1 + T_k} \]
+\\
+Sin embargo, en la práctica se va a utilizar este esquema modificado. Se va a utilizar \(\beta\) en lugar de \(k\), de la siguiente manera:
 
-        # Se aplican las mutaciones
-        mutar(seleccion\_aleatoria(poblacion))
-        h1.evaluacion = evaluar(h1)
-        h2.evaluacion = evaluar(h2) 
+\[ T_{k+1} = \frac{T_k}{1 + \beta*T_{k}} \]
 
-        # Competición para entrar en la poblacion
-        seleccion[0] = h1
-        seleccion[1] = h2
-        seleccion[2] = poblacion[0]
-        seleccion[3] = poblacion[1]
-        seleccion.ordenar()
-        poblacion[0] = seleccion.mejor()
-        poblacion[1] = seleccion.segundo\_mejor() 
-        poblacion.ordenar() 
+donde:\\
+- \( T_{\beta+1} \) es la temperatura en la iteración \( \beta+1 \),\\
+- \( T_0 \) es la temperatura inicial,\\
+- \( T_f \) es la temperatura final,\\
+- \( M \) es un factor de ajuste, y\\
+- \( \beta \) es el parámetro de enfriamiento.\\
+\\
+Para calcular el valor de \( \beta \) se utiliza la fórmula:
+\[ \beta = \frac{T_0 - T_f}{M \cdot T_0 \cdot T} \]
 
-    devolver poblacion.mejor\_cromosoma()
+A medida que \( \beta \) aumenta, el denominador \( 1 + \beta \) se vuelve más grande, lo que reduce la temperatura de manera efectiva.
+
+\\
+\subsubsection{Operador de vecino}
+Para el operador de vecino se utiliza la función de mutación anteriormente descrita.
+\subsubsection{Condición de enfriamiento}
+
+\subsubsection{Condición de parada}
 \pagebreak
-\subsection{}
+\subsection{Búsqueda Multiarranque Básica}
+La Heurística de Búsqueda Multiarranque Básica (Basic Multi-Start Search en inglés) es una técnica de optimización utilizada para resolver problemas de optimización combinatoria. Esta heurística se basa en la idea de realizar múltiples arranques aleatorios del algoritmo de búsqueda local y combinar los resultados obtenidos para encontrar una solución óptima.
+
+La implementación sigue el siguiente esquema: 
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\DontPrintSemicolon
+Input: entrenamiento, etiquetas\\
+Output: wMejor\\
+\\
+numArranques = 15;\\
+wIni = generarVectorAleatorio(len(entrenamiento[0]));\\
+wMejor = BL(entrenamiento, etiquetas, wIni);\\
+fMejor = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, wMejor);\\
+\For{i $\leftarrow$ 1 \KwTo numArranques}{\\
+\tab w = BL(entrenamiento, etiquetas, generarVectorAleatorio(len(entrenamiento[0])));\\
+\tab f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w);\\
+\tab \If{f > fMejor}{\\
+\tab \tab fMejor = f;\\
+\tab \tab wMejor = copiarVector(w);\\
+}\\
+}\\
+\Return wMejor;\\
+\caption{Búsqueda Multiarranque Básica (BMB)}
+\end{algorithm}
+
 \pagebreak
-\subsection{}
+\subsection{Búsqueda Local Reiterada (ILS)}
+ 
 \pagebreak
-\subsection{}
+\subsection{Variable Neighborhood Search}
 \pagebreak
-\subsection{}
-\pagebreak
-\subsection{}
+\subsection{ILS-ES}
 \pagebreak
 
 \section{Descripción en pseudocódigo de los algoritmos de comparación}
@@ -324,21 +408,23 @@ funcion estacionario(Poblacion matriz\_datos, funcion tipo\_cruce) devuelve un a
 Para esta práctica se ha decidido utilizar el lenguaje de programación Python por la velocidad de desarrollo y claridad del código. También se ha utilizado la librería numpy para la optimización de los calculos de los arrays. Como generación de numeros aleatorios se ha confiado en el módulo numpy.random y para medir el tiempo, la biblioteca time.  
 \pagebreak
 \subsection{Manual del usuario}
-- Requisitos: Python3 y las librerías numpy, functools, arff, time
-- Abrir el directorio donde se encuentra el archivo main.py en una terminal 
-- Ejecutar python3 main.py 
-- Esperar alrededor de 1 hora. Como indicación de progreso se puede leer de la salida standard los algoritmos ejecutados hasta el momento así como el que se está ejecutando actualmente. Hay 2 algoritmos, 3 bases de datos diferentes y 5 particiones de las bases de datos, por lo tanto hay 30 subapartados que deben ejecutarse en total. 
-- Los resultados pueden leerse de la salida standard así como del fichero resultados.csv
-\subsection{Mejoras realizadas respecto a la práctica 1}
-La retroalimentación de la primera práctica ha sido muy útil para mejorar la presentación de esta segunda práctica. Las mejoras adoptadas han sido las siguientes:
-- Los datos ahora se normalizan después de ser leidos y antes de ser procesados. En la práctica anterior por un descuido no fueron normalizados. 
-- En la práctica anterior ya se utilizaba la biblioteca numpy, pero por debajo de la clase Elemento, que tenía un vector de características y la clase correspondiente. Para esta práctica, en lugar de una lista de variables Elemento se ha utilizado una matriz numpy y una lista paralela de clases.
-- El leeme ha sido extendido para describir mejor el modo de ejecutar el programa
-- Se ha añadido pseudocódigo de los operadores comunes 
-\subsection{Mejoras pendientes para la siguiente práctica}
-- Tiempo: A pesar de haber cambiado la estructura de datos, el programa sigue siendo lento. Para la siguiente práctica tengo planeado explorar diferentes métodos para mejorar esto como programación con hilos o semicompilación en c con librerías como weave. 
-- Mejora de la P1: Comprobar por qué el algoritmo RELIEF me da un \% de reducción excesivo
-- Memoria en LaTeX:  Para mejorar la presentación de la memoria y poder incluir fórmulas, índice generado automáticamente e imagenes incrustadas de manera más profesional planeo utilizar LaTeX en la última práctica. 
+- Requisitos: Python3 y las librerías numpy, functools, arff, time \\
+- Abrir el directorio donde se encuentra el archivo main.py en una terminal\\ 
+- Ejecutar python3 main.py\\ 
+- Esperar alrededor de 1 hora. Como indicación de progreso se puede leer de la salida standard los algoritmos ejecutados hasta el momento así como el que se está ejecutando actualmente. Hay 2 algoritmos, 3 bases de datos diferentes y 5 particiones de las bases de datos, por lo tanto hay 30 subapartados que deben ejecutarse en total.\\ 
+- Los resultados pueden leerse de la salida standard así como del fichero resultados.csv\\
+\subsection{Mejoras realizadas respecto a las prácticas anteriores}
+La retroalimentación de la primera práctica ha sido muy útil para mejorar la presentación de esta segunda práctica. Las mejoras adoptadas han sido las siguientes:\\
+\subsubsection{Ejecución modular}
+En las anteriores entregas se presentaba un código que ejecutaba los algoritmos uno tras otro y generaba automáticamente las tablas a entregar. Para esta práctica se ha adaptado el programa para poder especificar como parámetro el algoritmo a ejecutar. Esta nueva implementación tiene muchas ventajas. \\
+Por una parte, permite una simulación de ejecución multihebra sin requerir bibliotecas adicionales. Esto reduce el tiempo para aprender nuevas bibliotecas ya que tiene una curva de aprendizaje muy suave. Además, la depuración es muy sencilla  \\
+Por otra parte, también permite un desarrollo modular de la práctica, de forma que se puede implementar y ejecutar algoritmos por separado y hacer un avance incremental de la práctica. Gracias a esto los algoritmos más lentos pueden utilizar todas las horas que necesiten mientras se documentan los resultados de los algoritmos que ya hayan terminado su ejecución. \\ 
+\subsubsection{Instrucciones de uso en el programa}
+Se ha creado un menú para facilitar al usuario introducir los datos correctos. 
+\subsubsection{Mejora de la presentación de la documentación}
+La memoria en las entregas anteriores estaba escrita en un procesador de textos. Para mejorar la presentación de la memoria se ha decidido cambiar a LaTeX. De esta forma se pueden incluir fórmulas, índice generado automáticamente, imagenes incrustadas de manera más profesional y mayor homogeneidad en el pseudocódigo, además de ser más fácil de reconocer entre el resto del texto. \\
+
+\pagebreak
 
 \section{Experimentos y análisis de los resultados}
 \subsection{Casos del problema empleados y valores de los parámetros considerados}
@@ -346,6 +432,29 @@ Incluir semillas utilizzdas
 Dado el tiempo necesario para ejecutar el programa (alrededor de 20 minutos), los pesos solo se han entrenado una vez con cada algoritmo y base de datos diferente, utilizando la semilla por defecto de la libería time. 
 
 \subsection{Tablas de resultados obtenidos}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{tables1.png}
+  \caption{Descripción de la imagen.}
+  \label{fig:imagen}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{tables2.png}
+  \caption{Descripción de la imagen.}
+  \label{fig:imagen}
+\end{figure}
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{tables3.png}
+  \caption{Descripción de la imagen.}
+  \label{fig:imagen}
+\end{figure}
+
+
 \pagebreak
 \subsection{Análisis de resultados}
 gráficas de convergencia, boxplots, análisis comparativo de las soluciones obtenidas, representación gráfica de las soluciones

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*- 
 from algoritmos.simples import BL, entrenador1NN, relief
 from algoritmos.geneticos import AGG_BLX, AGG_CA, AGE_BLX, AGE_CA 
-from algoritmos.trayectorias import BMB, ES, ILS, ILS_ES, VNS
- 
+from algoritmos.trayectorias import BMB, ES, ILS, ILS_ES, VLS
+import sys
 from algoritmos.evaluacionMatriz import *
 
 #import cProfile
@@ -40,26 +40,57 @@ def leerDatos(nombreArchivo: str) -> np.array:
 
 def main(): 
 
+    algoritmos_base = {
+        "1NN": entrenador1NN,
+        "BL": BL,
+        "RELIEF": relief,
+        "AGG-BLX": AGG_BLX,
+        "AGG-CA": AGG_CA, 
+        "AGE-BLX": AGE_BLX, 
+        "AGE-CA": AGE_CA, 
+        "BMB": BMB,
+        "ES": ES,
+        "ILS": ILS,
+        "ILS-ES": ILS_ES,
+        "VNS": VLS,
+    }
+
+    # Lectura de los argumentos ignorando el nombre del archivo
+    args = sys.argv[1:]
+    # Verificar si se ha proporcionado un argumento
+    if len(sys.argv)< 2:
+        print()
+        print("Debe proporcionar un argumento por línea de comandos.")
+        print("Uso: python3 main.py <algoritmo>")
+        print()
+        print("Las opciones son las siguientes: ")
+        for a in algoritmos_base.keys(): 
+            print(a)
+        print()
+        sys.exit(1)
+    algoritmo_a_ejecutar = args[0]
+    # Verificar si se ha proporcionado un argumento valido 
+    if algoritmo_a_ejecutar not in algoritmos_base.keys():
+        print()
+        print("Debe proporcionar un algoritmo válido.")
+        print("Uso: python3 main.py <argumento>")
+        print()
+        print("Las opciones son las siguientes: ")
+        for a in algoritmos_base.keys(): 
+            print(a)
+        print()
+        sys.exit(1)
+ 
     basesDatos = [
         "diabetes", 
         "ozone-320", 
         "spectf-heart"
     ]
+    algoritmos = []
 
-    algoritmos = [
-#        ("1NN", entrenador1NN),
-#        ("busqueda local", BL),
-#        ("RELIEF", relief),
-#        ("AGG-BLX", AGG_BLX),
-#        ("AGG-CA", AGG_CA), 
-#        ("AGE-BLX", AGE_BLX), 
-#        ("AGE-CA", AGE_CA), 
-        ("BMB", BMB),
-        ("ES", ES),
-        ("ILS", ILS),
-#        ("ILS-ES", ILS_ES),
-#        ("VNS", VNS),
-    ]
+    assert (algoritmo_a_ejecutar in algoritmos_base.keys()) 
+    algoritmos.append((algoritmo_a_ejecutar, algoritmos_base[algoritmo_a_ejecutar]))
+        
     
     parametros = ["pc", "pr", "ft", "tm"]
     PARTICIONES = 5
@@ -131,7 +162,7 @@ def main():
             for parametro in parametros: 
                 tabla_s += ";{0:.2f}".format(datos[algoritmo][bd][0][parametro])
         tabla_s += "\n"
-    with open("resultados.csv", "w") as resultados: 
+    with open(f"resultados{algoritmo_a_ejecutar}.csv", "w") as resultados: 
         resultados.write(tabla_s)       
 main() 
 #cProfile.run('main()')

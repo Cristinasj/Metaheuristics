@@ -14,8 +14,23 @@ def mutacion(w, i):
     w_nuevo[i] = 1
 
   return w_nuevo
-def BL(entrenamiento, etiquetas):
-  w_ini = np.random.rand(len(entrenamiento[0]))
+
+def BL(entrenamiento, etiquetas, w_ini):
+  '''
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+    w_ini: Vector de inicio para la búsqueda local 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
   max_iter = 1000
     
   #Normalizar e inicializar w
@@ -52,23 +67,57 @@ def BL(entrenamiento, etiquetas):
   return w
 
 def BMB(entrenamiento, etiquetas):  
-  num_arranques = 0
-  w_mejor = BL(entrenamiento, etiquetas)
-  for i in range(1, num_arranques):
-    w = BL(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])), 1000)
-    f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w, 0.5)
+  '''
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  num_arranques = 15
+
+  # Ejecución inicial para comparar 
+  w_ini = np.random.rand(len(entrenamiento[0]))
+  w_mejor = BL(entrenamiento, etiquetas, w_ini)
+  f_mejor = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_mejor)
+  
+  for i in range(num_arranques):
+    w = BL(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])))
+    f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w)
     if (f > f_mejor):
       f_mejor = f
       w_mejor = w.copy()
   return w_mejor
 
 def ES(entrenamiento, etiquetas): 
-  evaluaciones = 0
-  max_evaluaciones = 100000
+  '''
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  '''
+  Enfriamiento simulado 
+  '''
+  evaluaciones_efectuadas = 0
+  max_evaluaciones = 15000
 
   k = 1.3806e-23
   w = np.random.rand(len(entrenamiento[0]))
-  f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w, 0.5)
+  f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w)
   t0 = (0.3*f) / -np.log(0.3)
   tf = 10e-3
   t = t0
@@ -83,59 +132,108 @@ def ES(entrenamiento, etiquetas):
   f_mejor = f
 
   exitos = 1
-  while (evaluaciones < max_evaluaciones and exitos > 0):
-    vecinos = 0
-    exitos = 0
+  
+  vecinos = 0
+  exitos = 0
 
-    while (vecinos < max_vecinos and exitos < max_exitos and evaluaciones < max_evaluaciones):
+  while (vecinos < max_vecinos and exitos < max_exitos and evaluaciones_efectuadas < max_evaluaciones and exitos > 0):
 
-      w_ = mutacion(w, np.random.randint(len(w)))
-      f_ = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_, 0.5)
-      evaluaciones += 1
-      vecinos += 1
-      dif = f - f_
+    # Se aplica el operador de Vecino. Se escoge
+    # aleatoriamente la característica i a la que se
+    # aplica la perturbación
+    w_ = mutacion(w, np.random.randint(len(w)))
+    f_ = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_)
+    evaluaciones_efectuadas += 1
+    vecinos += 1
+    dif = f - f_
 
-      if (dif < 0 or random.random() < np.exp((-dif)/(t*k)) ):
-        
-        exitos += 1
-        w = w_.copy()
-        f = f_
-        if (f > f_mejor):
-          f_mejor = f
-          w_mejor = w.copy()
+    if (dif < 0 or random.random() < np.exp((-dif)/(t*k)) ):
+      
+      exitos += 1
+      w = w_.copy()
+      f = f_
+      if (f > f_mejor):
+        f_mejor = f
+        w_mejor = w.copy()
 
     t = t / (1+(B*t))
     
   return w_mejor
 
 def ILS(entrenamiento, etiquetas):
-  num_iteraciones = 10000
+  '''
+  parametros: 
 
-  w, f = BL(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])), 1000)
-  w_mejor = w.copy()
-  f_mejor = f 
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
 
-  for i in range(1, num_iteraciones):
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
 
-    w_2 = mutacion(w)
-    f_2 = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_2, 0.5)
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  def mutar(w):
+    w_mut = w.copy()
+    index = [i for i in range(len(w)) if w[i] > 0.4]
+    np.random.shuffle(index)
+    t = (int)(len(index)*0.1)
+    for i in range(0, t):
+      w_mut[i] += np.random.normal(0, 0.3)
+      if (w_mut[i] < 0):
+        w_mut[i] = 0
+      if (w_mut[i] > 1):
+        w_mut[i] = 1
 
-    w_3, f_3 = BL(entrenamiento, etiquetas, w_2, 1000)
+    return w_mut
 
-    # f_3 siempre será igual o mejor que f_2, no hace falta compararlos
-    if (f_3 > f):
-      f = f_3
-      w = w_3
+  num_iteraciones = 15
 
-    # Actualizamos la mejor solucion
-    if (f > f_mejor):
-      f_mejor = f
-      w_mejor = w.copy()
+  # Primera solución inicial aleatoria
+  w_mejor = BL(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])))
+  f_mejor =  funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_mejor) 
 
-  return w_mejor, f_mejor
+  for i in range(num_iteraciones):
+
+    w_mutada = mutar(w_mejor)
+
+    w_actual = BL(entrenamiento, etiquetas, w_mutada)
+    f_actual = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_actual)
+    if (f_actual > f_mejor):
+      f_mejor = f_actual
+      w_mejor = w_actual
+
+  return w_mejor
     
 def ILS_ES(entrenamiento, etiquetas): 
-    return np.random(len(entrenamiento[0]))
+  '''
+  parametros: 
 
-def VNS(entrenamiento, etiquetas): 
-    return np.random(len(entrenamiento[0]))
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  return np.random(len(entrenamiento[0]))
+
+def VLS(entrenamiento, etiquetas): 
+  '''
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  return np.random(len(entrenamiento[0]))
