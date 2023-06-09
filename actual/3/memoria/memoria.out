@@ -11,29 +11,35 @@
 \BOOKMARK [2][-]{subsection.3.1}{RELIEF }{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.2}{BL}{section.3}% 12
 \BOOKMARK [2][-]{subsection.3.3}{Algoritmos gen\351ticos estacionarios}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.4}{}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.5}{}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.6}{}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.7}{}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.8}{}{section.3}% 18
-\BOOKMARK [1][-]{section.4}{Descripci\363n en pseudoc\363digo de los algoritmos de comparaci\363n}{}% 19
-\BOOKMARK [1][-]{section.5}{Procedimiento considerado para desarrollar la pr\341ctica}{}% 20
-\BOOKMARK [2][-]{subsection.5.1}{Manual del usuario}{section.5}% 21
-\BOOKMARK [2][-]{subsection.5.2}{Mejoras realizadas respecto a la pr\341ctica 1}{section.5}% 22
-\BOOKMARK [2][-]{subsection.5.3}{Mejoras pendientes para la siguiente pr\341ctica}{section.5}% 23
-\BOOKMARK [1][-]{section.6}{Experimentos y an\341lisis de los resultados}{}% 24
-\BOOKMARK [2][-]{subsection.6.1}{Casos del problema empleados y valores de los par\341metros considerados}{section.6}% 25
-\BOOKMARK [2][-]{subsection.6.2}{Tablas de resultados obtenidos}{section.6}% 26
-\BOOKMARK [2][-]{subsection.6.3}{An\341lisis de resultados}{section.6}% 27
-\BOOKMARK [3][-]{subsubsection.6.3.1}{1-NN}{subsection.6.3}% 28
-\BOOKMARK [3][-]{subsubsection.6.3.2}{Busqueda Local}{subsection.6.3}% 29
-\BOOKMARK [3][-]{subsubsection.6.3.3}{RELIEF}{subsection.6.3}% 30
-\BOOKMARK [3][-]{subsubsection.6.3.4}{AGE-BLX}{subsection.6.3}% 31
-\BOOKMARK [3][-]{subsubsection.6.3.5}{AGE-CA}{subsection.6.3}% 32
-\BOOKMARK [3][-]{subsubsection.6.3.6}{}{subsection.6.3}% 33
-\BOOKMARK [3][-]{subsubsection.6.3.7}{}{subsection.6.3}% 34
-\BOOKMARK [3][-]{subsubsection.6.3.8}{}{subsection.6.3}% 35
-\BOOKMARK [3][-]{subsubsection.6.3.9}{}{subsection.6.3}% 36
-\BOOKMARK [3][-]{subsubsection.6.3.10}{}{subsection.6.3}% 37
-\BOOKMARK [3][-]{subsubsection.6.3.11}{Conclusi\363n}{subsection.6.3}% 38
-\BOOKMARK [1][-]{section.7}{Referencias bibliogr\341ficas}{}% 39
+\BOOKMARK [2][-]{subsection.3.4}{Enfriamiento simulado}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Esquema de enfriamiento}{subsection.3.4}% 15
+\BOOKMARK [3][-]{subsubsection.3.4.2}{Operador de vecino}{subsection.3.4}% 16
+\BOOKMARK [3][-]{subsubsection.3.4.3}{Condici\363n de enfriamiento}{subsection.3.4}% 17
+\BOOKMARK [3][-]{subsubsection.3.4.4}{Condici\363n de parada}{subsection.3.4}% 18
+\BOOKMARK [3][-]{subsubsection.3.4.5}{Pseudoc\363digo del algoritmo}{subsection.3.4}% 19
+\BOOKMARK [2][-]{subsection.3.5}{B\372squeda Multiarranque B\341sica}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.6}{B\372squeda Local Reiterada \(ILS\)}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.7}{ILS-ES}{section.3}% 22
+\BOOKMARK [1][-]{section.4}{Procedimiento considerado para desarrollar la pr\341ctica}{}% 23
+\BOOKMARK [2][-]{subsection.4.1}{Manual del usuario}{section.4}% 24
+\BOOKMARK [2][-]{subsection.4.2}{Mejoras realizadas respecto a las pr\341cticas anteriores}{section.4}% 25
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Ejecuci\363n modular}{subsection.4.2}% 26
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Instrucciones de uso en el programa}{subsection.4.2}% 27
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Mejora de la presentaci\363n de la documentaci\363n}{subsection.4.2}% 28
+\BOOKMARK [1][-]{section.5}{Tablas de resultados obtenidos}{}% 29
+\BOOKMARK [1][-]{section.6}{An\341lisis de resultados}{}% 30
+\BOOKMARK [2][-]{subsection.6.1}{representaci\363n gr\341fica de las soluciones}{section.6}% 31
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Porcentaje de clasificaci\363n}{subsection.6.1}% 32
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Porcentaje de reducci\363n}{subsection.6.1}% 33
+\BOOKMARK [2][-]{subsection.6.2}{an\341lisis comparativo de las soluciones obtenidas}{section.6}% 34
+\BOOKMARK [3][-]{subsubsection.6.2.1}{1-NN}{subsection.6.2}% 35
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Busqueda Local}{subsection.6.2}% 36
+\BOOKMARK [3][-]{subsubsection.6.2.3}{RELIEF}{subsection.6.2}% 37
+\BOOKMARK [3][-]{subsubsection.6.2.4}{AGE-BLX}{subsection.6.2}% 38
+\BOOKMARK [3][-]{subsubsection.6.2.5}{AGE-CA}{subsection.6.2}% 39
+\BOOKMARK [3][-]{subsubsection.6.2.6}{Enfriamiento Simulado}{subsection.6.2}% 40
+\BOOKMARK [3][-]{subsubsection.6.2.7}{B\372squeda Multiarranque B\341sica}{subsection.6.2}% 41
+\BOOKMARK [3][-]{subsubsection.6.2.8}{Iterative Local Search}{subsection.6.2}% 42
+\BOOKMARK [3][-]{subsubsection.6.2.9}{ILS-ES}{subsection.6.2}% 43
+\BOOKMARK [2][-]{subsection.6.3}{Conclusi\363n}{section.6}% 44
+\BOOKMARK [1][-]{section.7}{Referencias bibliogr\341ficas}{}% 45

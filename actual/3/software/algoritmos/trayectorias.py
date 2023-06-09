@@ -1,6 +1,7 @@
 import numpy as np 
 from algoritmos.evaluacionMatriz import funcionEvaluacionLeaveOneOut
 from numpy import random 
+import math
 
 def mutacion(w, i):
   '''
@@ -95,8 +96,9 @@ def BMB(entrenamiento, etiquetas):
       w_mejor = w.copy()
   return w_mejor
 
-def ES(entrenamiento, etiquetas): 
+def ES(entrenamiento, etiqueta):  
   '''
+  Algoritmo de enfriamiento simulado para resolver el problema. Los pesos de inicio son aleatorios.  
   parametros: 
 
     entrenamiento: Matriz con el conjunto de 
@@ -109,59 +111,11 @@ def ES(entrenamiento, etiquetas):
   return: 
     pesos optimizados con la Búsqueda Local  
   '''
+  return ES_basico(entrenamiento, etiqueta, np.random.rand(len(entrenamiento[0])))
+
+def ES_basico(entrenamiento, etiquetas, w): 
   '''
-  Enfriamiento simulado 
-  '''
-  evaluaciones_efectuadas = 0
-  max_evaluaciones = 15000
-
-  k = 1.3806e-23
-  w = np.random.rand(len(entrenamiento[0]))
-  f = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w)
-  t0 = (0.3*f) / -np.log(0.3)
-  tf = 10e-3
-  t = t0
-
-  max_vecinos = 10*len(w)
-  max_exitos = 0.1*max_vecinos
-
-  M = (max_evaluaciones / max_vecinos)
-
-  B = (t0 - tf) / (M * t0 * tf)
-  w_mejor = w.copy()
-  f_mejor = f
-
-  exitos = 1
-  
-  vecinos = 0
-  exitos = 0
-
-  while (vecinos < max_vecinos and exitos < max_exitos and evaluaciones_efectuadas < max_evaluaciones and exitos > 0):
-
-    # Se aplica el operador de Vecino. Se escoge
-    # aleatoriamente la característica i a la que se
-    # aplica la perturbación
-    w_ = mutacion(w, np.random.randint(len(w)))
-    f_ = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_)
-    evaluaciones_efectuadas += 1
-    vecinos += 1
-    dif = f - f_
-
-    if (dif < 0 or random.random() < np.exp((-dif)/(t*k)) ):
-      
-      exitos += 1
-      w = w_.copy()
-      f = f_
-      if (f > f_mejor):
-        f_mejor = f
-        w_mejor = w.copy()
-
-    t = t / (1+(B*t))
-    
-  return w_mejor
-
-def ILS(entrenamiento, etiquetas):
-  '''
+  Algoritmo de enfriamiento simulado que recibe como parámetro los pesos con los que comenzar 
   parametros: 
 
     entrenamiento: Matriz con el conjunto de 
@@ -170,6 +124,81 @@ def ILS(entrenamiento, etiquetas):
     coreespondiente
 
     etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+    w: Pesos con los que comenzar    
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  u = 0.3 
+  mejor_error = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w)
+  CS0 = mejor_error
+  phi = 0.2
+  neg_ln_phi = -math.log(phi)
+  temperatura_inicial=u*CS0/(neg_ln_phi) 
+  factor_enfriamiento=0.95 
+  iteraciones_temperatura=100
+  iteraciones_por_vecino=15
+  # Inicializar el vector de pesos
+  mejor_w = w.copy()
+  
+  # Bucle principal de enfriamiento simulado
+  temperatura = temperatura_inicial
+  for i in range(iteraciones_temperatura):
+      for j in range(iteraciones_por_vecino):
+          # Generar un vecino aleatorio
+          vecino = mejor_w + np.random.normal(0, 0.1, size=w.shape)
+          
+          # Calcular el error del vecino
+          error_vecino = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, vecino)
+          
+          # Determinar si se acepta el vecino como la mejor solución
+          if error_vecino < mejor_error:
+              mejor_w = vecino
+              mejor_error = error_vecino
+          else:
+              probabilidad_aceptacion = np.exp(-(error_vecino - mejor_error) / temperatura)
+              if np.random.rand() < probabilidad_aceptacion:
+                  mejor_w = vecino
+                  mejor_error = error_vecino
+      
+      # Enfriar la temperatura
+      temperatura *= factor_enfriamiento
+  
+  return mejor_w
+
+def ILS(entrenamiento, etiquetas): 
+  '''
+  Entrenador ILS que es llamado desde main
+
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+  return: 
+    pesos optimizados con la Búsqueda Local  
+  '''
+  return ILS_basico(entrenamiento, etiquetas, BL)
+
+def ILS_basico(entrenamiento, etiquetas, funcion_busqueda):
+  '''
+  ILS para generar el entrenador ILS que se usa en main o ILS-ES, 
+  dependiendo de si se le pasa BL o ES como función de búsqueda
+
+  parametros: 
+
+    entrenamiento: Matriz con el conjunto de 
+    entrenamiento. Las filas son los elementos y 
+    las columnas son el valor para la caracteristica 
+    coreespondiente
+
+    etiquetas: Clase a la que pertenece cada fila de la matriz 
+
+    funcion_busqueda: Puede ser ES o BL 
 
   return: 
     pesos optimizados con la Búsqueda Local  
@@ -191,14 +220,14 @@ def ILS(entrenamiento, etiquetas):
   num_iteraciones = 15
 
   # Primera solución inicial aleatoria
-  w_mejor = BL(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])))
+  w_mejor = funcion_busqueda(entrenamiento, etiquetas, np.random.rand(len(entrenamiento[0])))
   f_mejor =  funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_mejor) 
 
   for i in range(num_iteraciones):
 
     w_mutada = mutar(w_mejor)
 
-    w_actual = BL(entrenamiento, etiquetas, w_mutada)
+    w_actual = funcion_busqueda(entrenamiento, etiquetas, w_mutada)
     f_actual = funcionEvaluacionLeaveOneOut(entrenamiento, etiquetas, w_actual)
     if (f_actual > f_mejor):
       f_mejor = f_actual
@@ -220,7 +249,7 @@ def ILS_ES(entrenamiento, etiquetas):
   return: 
     pesos optimizados con la Búsqueda Local  
   '''
-  return np.random(len(entrenamiento[0]))
+  return ILS_basico(entrenamiento, etiquetas, ES_basico)
 
 def VLS(entrenamiento, etiquetas): 
   '''
